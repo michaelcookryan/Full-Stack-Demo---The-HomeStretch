@@ -7,6 +7,8 @@ mongoose.connect(
     "mongodb+srv://mcryan27:mike272727@homestretch-l9uzw.mongodb.net/test?retryWrites=true&w=majority",
     { useNewUrlParser: true }
 );
+const nanoid = require("nanoid");
+const generator = require('generate-password');
 
 const db = mongoose.connection
 
@@ -19,7 +21,7 @@ router.get("/", (req, res) => {
 
     User.find((err, data) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, data: data });
+        return res.json({ data });
     });
     
 });
@@ -27,12 +29,16 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   
     let user = new User({ 
-        clientId : req.body.id,
+        clientId : nanoid(5),
         name : req.body.name,
         email : req.body.email,
-        password : req.body.password,
-        role : req.body.role,
-        videos : req.body.videos})
+        password: generator.generate({
+            length: 6,
+            numbers: true
+        }),
+        role : "Client",
+        videos: req.body.videos
+    })
 
 
     user.save((err) => {
@@ -44,21 +50,21 @@ router.post("/", (req, res) => {
 
 router.put("/", (req, res) => {
 
-    let userUpdated = new User({
-        name: req.body.name,
-        email: req.body.email,
-        videos: req.body.videos
-    })
-    User.find((err, data) => {
-        console.log("Data: ", data)
-        if (err) return res.json({ success: false, error: err });
-        // return res.json({ success: true, data: data });
+    // let userUpdated = new User({
+    //     name: req.body.name,
+    //     email: req.body.email,
+    //     videos: req.body.videos
+    // })
+    // User.find((err, data) => {
+    //     console.log("Data: ", data)
+    //     if (err) return res.json({ success: false, error: err });
+    //     // return res.json({ success: true, data: data });
 
-        userUpdated.save((err) => {
-            if (err) return res.json({ success: false, error: err });
-            return res.json(userUpdated);
-        });
-    });
+    //     userUpdated.save((err) => {
+    //         if (err) return res.json({ success: false, error: err });
+    //         return res.json(userUpdated);
+    //     });
+    // });
 
     // newInfo.save((err) => {
     //     if (err) return res.json({ success: false, error: err });

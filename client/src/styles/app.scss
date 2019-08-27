@@ -1,0 +1,132 @@
+@import "partials/colors";
+@import "partials/fonts";
+
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+
+/* Maintain consistant container widths */
+@mixin container($width, $max-size, $side-margins){
+    width:$width;
+    max-width: $max-size;
+    margin:0 $side-margins;
+}
+
+
+body{
+    margin:0;
+    color:$main-black;
+    font-family: $regular;
+}
+h1{
+  font-family: $bold;
+  font-size:1.5rem;
+  line-height:2rem;
+  margin-top:2rem;  
+}
+h2{
+    font-family: $bold;
+    font-size: 1.5rem;
+    line-height:2rem;
+    margin:0;
+}
+h3{
+    font-family: $demi;
+    font-size:1rem;
+    line-height: 1.5rem;
+}
+h4{
+    font-family:$regular;
+    font-size:.82rem;
+    line-height: 1.15rem;
+    font-weight:500;
+}
+
+
+.lists{
+        line-height:1.25rem; 
+        margin-right:2em;
+}
+h5{
+    font-family: $demi;
+    font-size:.75rem;
+    line-height: 1.25rem;
+    color:$text-label;
+    text-transform: uppercase;
+}
+section{
+    @include container(100%, 720px, auto);
+}
+main{
+    @include container(90%, 720px, auto);
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+button{
+    text-transform: uppercase;
+    padding:1.25em;
+    background:$primary-cta-text-link;
+    color:#fff;
+    border-radius:4px;
+    border:none;
+    float:right;
+    transition: all .2s ease-in-out;
+    
+    &:hover
+   {
+        background:$primary-cta-hover;
+        transition: all .2s ease-in-out;
+    }
+    &:active,
+    &:visited,
+    &:focus{
+        background:$primary-cta-text-link;
+    }
+
+    &:focus{
+        outline:none;
+    }
+}
+ input, textarea{
+            border:1px solid $text-field-border;
+            background:$text-field-bg;
+            border-radius: 4px;
+            outline:none;
+            width:100%;
+            margin:0 0 2.2em 0;
+            padding:1em
+        }
+textarea, 
+textarea::placeholder,
+input::placeholder{
+    font-family:$regular;
+}
+input:focus, textarea:focus{
+    border-color:$primary-cta-text-link;
+}
+
+
+
+
+@media screen and(min-width:768px){
+    h1{
+        font-size:2.25rem;
+        line-height:2.75rem; 
+        margin-top:3rem; 
+    }
+    h4{
+        font-size:.88rem;
+        line-height:1.4rem;
+    }
+    main,section{
+        @include container(90%, 1080px, auto); 
+    }
+}

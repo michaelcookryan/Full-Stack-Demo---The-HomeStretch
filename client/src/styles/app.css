@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'AvenirNextLTPro-Regular';
+  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: 'AvenirNextLTPro-Demi';
+  src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
+}
+
+@font-face {
+  font-family: 'AvenirNextLTPro-Bold';
+  src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+/* Maintain consistant container widths */
+body {
+  margin: 0;
+  color: #323232;
+  font-family: "AvenirNextLTPro-Regular";
+}
+
+h1 {
+  font-family: "AvenirNextLTPro-Bold";
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-top: 2rem;
+}
+
+h2 {
+  font-family: "AvenirNextLTPro-Bold";
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 0;
+}
+
+h3 {
+  font-family: "AvenirNextLTPro-Demi";
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+h4 {
+  font-family: "AvenirNextLTPro-Regular";
+  font-size: .82rem;
+  line-height: 1.15rem;
+  font-weight: 500;
+}
+
+.lists {
+  line-height: 1.25rem;
+  margin-right: 2em;
+}
+
+h5 {
+  font-family: "AvenirNextLTPro-Demi";
+  font-size: .75rem;
+  line-height: 1.25rem;
+  color: #AFAFAF;
+  text-transform: uppercase;
+}
+
+section {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+main {
+  width: 90%;
+  max-width: 720px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+button {
+  text-transform: uppercase;
+  padding: 1.25em;
+  background: #0095FF;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  float: right;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+button:hover {
+  background: #0065AD;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+button:active, button:visited, button:focus {
+  background: #0095FF;
+}
+
+button:focus {
+  outline: none;
+}
+
+input, textarea {
+  border: 1px solid #E1E1E1;
+  background: #FAFAFA;
+  border-radius: 4px;
+  outline: none;
+  width: 100%;
+  margin: 0 0 2.2em 0;
+  padding: 1em;
+}
+
+textarea,
+textarea::-webkit-input-placeholder,
+input::-webkit-input-placeholder {
+  font-family: "AvenirNextLTPro-Regular";
+}
+
+textarea,
+textarea:-ms-input-placeholder,
+input:-ms-input-placeholder {
+  font-family: "AvenirNextLTPro-Regular";
+}
+
+textarea,
+textarea::-ms-input-placeholder,
+input::-ms-input-placeholder {
+  font-family: "AvenirNextLTPro-Regular";
+}
+
+textarea,
+textarea::placeholder,
+input::placeholder {
+  font-family: "AvenirNextLTPro-Regular";
+}
+
+input:focus, textarea:focus {
+  border-color: #0095FF;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    margin-top: 3rem;
+  }
+  h4 {
+    font-size: .88rem;
+    line-height: 1.4rem;
+  }
+  main, section {
+    width: 90%;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+}
+/*# sourceMappingURL=app.css.map */

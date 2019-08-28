@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import VideoPlayer from './VideoPlayer'
+import VideoList from './VideoList'
+import { Link } from 'react-router-dom';
 
 const clientsUrl = "http://localhost:8090/clients";
 // const videosUrl = "http://localhost:8090/videos";
@@ -11,6 +14,7 @@ export default class ClientView extends Component {
         name: "",
         email: "",
         videos: [],
+        current: ""
     }
 
     componentDidMount() {
@@ -37,18 +41,24 @@ export default class ClientView extends Component {
 
                                 console.log("before setting state: ", this.state.videos)
                                 let foundVideos = []
-
+                                let finalGroup = []
                                 assignedVideos.map(video => { 
-                                    let newVids = foundVideos.concat(allVideos.filter(selected => video === selected.videoId))
-                                    console.log("video objects: ", newVids)
-                                    // return foundVideos
-                                    this.setState({
-                                        videos: newVids
-                                    })
-                                    foundVideos.push(newVids)
-                                    console.log("found videos: ", foundVideos)
+
+                                    // let newVids = foundVideos.concat(allVideos.find(selected => video === selected.videoId))
+
+                                    let newVids = allVideos.find(selected => video === selected.videoId)
+                                    console.log("newVids: ",newVids)
+                                    finalGroup.push(newVids)
+                                    // this.setState({
+                                    //     videos: newVids
+                                    // })
+
+                                    // finalGroup.push(newVids)
+                                   
                                 })
-                                                              
+                                this.setState({
+                                    videos: finalGroup
+                                })                    
                                 console.log("new videos in state: ", this.state.videos)
                             }).catch(err => console.log(err))
                     })
@@ -58,37 +68,44 @@ export default class ClientView extends Component {
         
     }
 
+componentDidUpdate(prevProps) {
+      if (this.props.match.params.id !== prevProps.match.params.id) {
 
+          axios.get(clientsUrl + `/${prevProps.match.params.id}`)
+              .then(response => {
+
+                  this.setState({
+                      current: response.data.data,
+                      
+
+                  })
+
+              }).catch(err => console.log(err));
+
+      }
+  }
 
 
 
     retrieveMyVideos = videos => { 
-        axios.get(`${clientsUrl}/:id/videos`)
-            .then(response => {
-
-                const allVids = response.data.data
-                const myVideos = this.state.videos
-                
-                myVideos.map(eachVid => {
-                    let foundVids = allVids.filter(video => eachVid === video.videoId)
-                    console.log("here?: ", foundVids)
-                    return foundVids
-                })
-                
-                
-                // return foundVids
-
-            }).catch(err => console.log(err))
+        videos.map(video => {
+            return <div>
+                <div>{video.title}</div>
+            </div>
+        })
         
     }
 
 
     render() {
+        
         return (
-            <div>
+            <section>
                 <h1>Client Page</h1> 
                 {/* {this.retrieveMyVideos(this.state.videos)} */}
-            </div>
+                <VideoPlayer current={this.state.current}/>
+                <VideoList videos={this.state.videos}/>
+            </section>
         )
     }
 }

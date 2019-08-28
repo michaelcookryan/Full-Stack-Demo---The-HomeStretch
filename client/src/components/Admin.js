@@ -34,30 +34,7 @@ export default class Admin extends Component {
       .catch(err => console.log(err));
   }
 
-  // componentDidUpdate(prevProps) {
-  //     if (this.props.match.params.id !== prevProps.match.params.id) {
-
-  //         let searchCriteria = ''
-
-  //         if (this.props.match.params.id === undefined) {
-  //             searchCriteria = JSON.parse(localStorage.defaultInfo)
-  //         } else {
-  //             searchCriteria = this.props.match.params.id
-  //         }
-
-  //         axios.get(url + `/${searchCriteria}`)
-  //             .then(response => {
-
-  //                 this.setState({
-  //                     clients: response.data.data,
-  //                     // videos: response.data,
-
-  //                 })
-
-  //             }).catch(err => console.log(err));
-
-  //     }
-  // }
+  
 showAllVideoOptions() {
     const options = this.state.videos.map(video => {
 

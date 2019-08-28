@@ -8,7 +8,7 @@ export default function ClientItem({ clientId, email, name, videos }) {
                 <div className="clientList__item--name">{name}</div>
                 <div className="clientList__item--id">{clientId}</div>
                 <div className="clientList__item--email">{email}</div>
-                <div className="clientList__item--videos">{videos.length}</div>
+                <div className="clientList__item--videos">{videos.length} videos assigned</div>
                 <div className="clientList__item--buttons">
                     <button className="item__edit">Edit</button>
                     <button className="item__delete">Delete</button>

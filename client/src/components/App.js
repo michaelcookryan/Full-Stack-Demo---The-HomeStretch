@@ -17,7 +17,7 @@ function App() {
           <Route path="/" exact component={Landing} />
           <Route path="/admin" component={Admin} />
           <Route path="/admin/:id" component={EditItem} />
-          <Route path="/clients" component={ClientView} />
+          <Route path="/clients/:id" component={ClientView} />
         </Switch>
       </main>
       

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ClientList from "./ClientList";
-// import VideoOptions from './VideoOptions'
 import axios from "axios";
 
 const clientsUrl = "http://localhost:8090/clients";
@@ -61,16 +60,9 @@ showAllVideoOptions() {
         assigned.push(checkbox.value);
       }
     }
-    //   console.log(assigned);
-    // const clientToAdd = {
-    //   name: event.target.name.value,
-    //   email: event.target.email.value,
-    //   videos: assigned
-    // };
     
-
     let type = { "content-type": "application/json" };
-      console.log(assigned);
+
       const clientToAdd = {
           name: event.target.name.value,
           email: event.target.email.value,

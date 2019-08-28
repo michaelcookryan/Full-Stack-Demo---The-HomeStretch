@@ -1,17 +1,18 @@
 import React from 'react'
 import VideoItem from './VideoItem'
 
-export default function VideoList({videos}) {
+export default function VideoList({videos, clientId}) {
     
          const assignedVideos = videos.map(video => {
-console.log("from the list: ",videos)
-             console.log(typeof video)
+
                 return (
 
                     <VideoItem
                         key={video._id}
-                        id={video.id}
+                        videoId={video.videoId}
                         title={video.title}
+                        clientId={clientId}
+                        unique={video._id}
                         
                     />
                 )

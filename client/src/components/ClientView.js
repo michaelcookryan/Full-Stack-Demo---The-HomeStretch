@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import axios from "axios";
 import VideoPlayer from './VideoPlayer'
 import VideoList from './VideoList'
-import { Link } from 'react-router-dom';
 
 const clientsUrl = "http://localhost:8090/clients";
-// const videosUrl = "http://localhost:8090/videos";
+
 
 export default class ClientView extends Component {
 
@@ -20,8 +19,8 @@ export default class ClientView extends Component {
     componentDidMount() {
         
         // axios.get(`${clientsUrl}` + "/:id")
-        axios.get(clientsUrl + "/WLiF9").then(response => {
-                console.log("from didMount: ",response)
+        axios.get(clientsUrl + "/hgBtP").then(response => {
+               
                 this.setState({
 
                     clientId: response.data.response.clientId,
@@ -30,36 +29,27 @@ export default class ClientView extends Component {
                     videos: response.data.response.videos
                     
                 }, () => { 
-                        
-                       
+                                               
                         axios.get(`${clientsUrl}/:id/videos`)
                         
                             .then(response => { 
                                 
                                 const allVideos = response.data.data
-                                const assignedVideos = this.state.videos
-
-                                console.log("before setting state: ", this.state.videos)
-                                let foundVideos = []
-                                let finalGroup = []
+                                const assignedVideos = this.state.videos                                                              
+                                let currentClientVideosGroup = []
                                 assignedVideos.map(video => { 
-
-                                    // let newVids = foundVideos.concat(allVideos.find(selected => video === selected.videoId))
-
+                                    
                                     let newVids = allVideos.find(selected => video === selected.videoId)
-                                    console.log("newVids: ",newVids)
-                                    finalGroup.push(newVids)
-                                    // this.setState({
-                                    //     videos: newVids
-                                    // })
-
-                                    // finalGroup.push(newVids)
-                                   
+                                    
+                                   return currentClientVideosGroup.push(newVids)
+                                                                       
                                 })
+
                                 this.setState({
-                                    videos: finalGroup
+                                    videos: currentClientVideosGroup,
+                                    current: currentClientVideosGroup[0]
                                 })                    
-                                console.log("new videos in state: ", this.state.videos)
+                                
                             }).catch(err => console.log(err))
                     })
                 
@@ -69,42 +59,32 @@ export default class ClientView extends Component {
     }
 
 componentDidUpdate(prevProps) {
-      if (this.props.match.params.id !== prevProps.match.params.id) {
 
-          axios.get(clientsUrl + `/${prevProps.match.params.id}`)
-              .then(response => {
+    if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
+        console.log("previous: ", this.state.current)
 
-                  this.setState({
-                      current: response.data.data,
-                      
+        const copyCurrent = this.state.videos
 
-                  })
+        const newCurrent = copyCurrent.find(video => video.videoId === this.props.match.params.videoId)
 
-              }).catch(err => console.log(err));
+        console.log("new: ", newCurrent)
+
+            this.setState({
+                current: newCurrent
+            })       
 
       }
   }
-
-
-
-    retrieveMyVideos = videos => { 
-        videos.map(video => {
-            return <div>
-                <div>{video.title}</div>
-            </div>
-        })
-        
-    }
-
 
     render() {
         
         return (
             <section>
                 <h1>Client Page</h1> 
-                {/* {this.retrieveMyVideos(this.state.videos)} */}
-                <VideoPlayer current={this.state.current}/>
-                <VideoList videos={this.state.videos}/>
+               
+                <VideoPlayer current={this.state.current.url}/>
+                <VideoList videos={this.state.videos} clientId={this.state.clientId}/>
+
             </section>
         )
     }

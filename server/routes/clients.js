@@ -24,6 +24,7 @@ router.get("/", (req, res) => {
 
     User.find((err, data) => {
         if (err) return res.json({ success: false, error: err });
+        
         return res.json({ data });
     });
     
@@ -31,12 +32,9 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     const query = { "clientId": req.params.id };
-    console.log("from router: ", req.params.id)
-    console.log("from router: ", query)
 
     User.findOne(query)
         .then(response => {
-           console.log("got object", response)
 
             return res.json({ response });
 
@@ -45,8 +43,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.get("/:id/videos", (req, res) => {
-    // const query = { "clientId": req.params.id };
-    console.log("got videos1", req.params.id)
+   
     Video.find((err, data) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ data });

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/User");
+const Video = require("../models/Video")
 
 mongoose.connect(
     process.env.MONGODB_URI ||
@@ -28,19 +29,45 @@ router.get("/", (req, res) => {
     
 });
 
+router.get("/:id", (req, res) => {
+    const query = { "clientId": req.params.id };
+    console.log("from router: ", req.params.id)
+    console.log("from router: ", query)
+
+    User.findOne(query)
+        .then(response => {
+           console.log("got object", response)
+
+            return res.json({ response });
+
+        }).catch(err => console.error(`Failed to find document: ${err}`))
+
+});
+
+router.get("/:id/videos", (req, res) => {
+    // const query = { "clientId": req.params.id };
+    console.log("got videos1", req.params.id)
+    Video.find((err, data) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json({ data });
+    });
+  
+
+});
+
 router.post("/", (req, res) => {
-  console.log(req.body.videos)
-    let user = new User({ 
-        clientId : nanoid(5),
-        name : req.body.name,
-        email : req.body.email,
+
+    let user = new User({
+        clientId: nanoid(5),
+        name: req.body.name,
+        email: req.body.email,
         password: generator.generate({
             length: 6,
             numbers: true
         }),
-        role : "Client",
+        role: "Client",
         videos: req.body.videos
-    })
+    });
 
 
     user.save((err) => {

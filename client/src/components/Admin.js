@@ -5,6 +5,8 @@ import axios from "axios";
 
 const clientsUrl = "http://localhost:8090/clients";
 const videosUrl = "http://localhost:8090/videos";
+
+
 export default class Admin extends Component {
   state = {
     clients: [],
@@ -60,7 +62,7 @@ showAllVideoOptions() {
     const options = this.state.videos.map(video => {
 
         return (
-            <div className="video__checkbox">
+          <div className="video__checkbox" key={video._id}>
             <label>{video.title}</label>
             <input type="checkbox" name="assignedVideos" value={video.videoId} />
             </div>

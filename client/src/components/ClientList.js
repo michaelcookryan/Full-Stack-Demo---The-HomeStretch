@@ -8,7 +8,7 @@ export default function ClientList({ clients }) {
             return (
 
                 <ClientItem
-                    key={client.id}
+                    key={client._id}
                     clientId={client.id}
                     name={client.name}
                     email={client.email}

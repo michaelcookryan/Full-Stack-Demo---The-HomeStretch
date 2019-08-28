@@ -1,9 +1,9 @@
 import React from 'react'
+import YouTube from 'react-youtube';
 
 export default function VideoPlayer({current}) {
     return (
-        <div className="video-player">
-            <video className="video" src={current} poster="" controls ></video>
-        </div>
+
+        <YouTube videoId={current}/>
     )
 }

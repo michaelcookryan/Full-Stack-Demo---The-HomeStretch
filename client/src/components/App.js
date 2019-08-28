@@ -18,7 +18,7 @@ function App() {
           <Route path="/admin" component={Admin} />
           <Route path="/admin/:id" component={EditItem} />
           <Route path="/clients/:clientId/:videoId" component={ClientView} />
-          {/* <Route path="/clients/:videoId" component={ClientView} /> */}
+          <Route path="/clients/:clientId" component={ClientView} />
         </Switch>
       </main>
       

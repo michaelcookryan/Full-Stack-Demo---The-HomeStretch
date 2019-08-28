@@ -80,7 +80,7 @@ componentDidUpdate(prevProps) {
         
         return (
             <section>
-                <h1>Client Page</h1> 
+                <h1>Videos for {this.state.name}</h1> 
                
                 <VideoPlayer current={this.state.current.url}/>
                 <VideoList videos={this.state.videos} clientId={this.state.clientId}/>

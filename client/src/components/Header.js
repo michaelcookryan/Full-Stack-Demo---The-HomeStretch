@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <header>
             <section>
-                <h2>header</h2>
+                <h2>The HomeStretch</h2>
             </section>            
         </header>
     )

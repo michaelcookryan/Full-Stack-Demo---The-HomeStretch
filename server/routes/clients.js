@@ -1,19 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const User = require("../models/User")
+const User = require("../models/User");
+
 mongoose.connect(
     process.env.MONGODB_URI ||
     "mongodb+srv://mcryan27:mike272727@homestretch-l9uzw.mongodb.net/test?retryWrites=true&w=majority",
     { useNewUrlParser: true }
 );
+
 const nanoid = require("nanoid");
 const generator = require('generate-password');
 
 const db = mongoose.connection
 
 db.once("open", () => {
-    console.log("connected to database");
+    console.log("connected to client database");
 });
 
 
@@ -27,7 +29,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  
+  console.log(req.body.videos)
     let user = new User({ 
         clientId : nanoid(5),
         name : req.body.name,

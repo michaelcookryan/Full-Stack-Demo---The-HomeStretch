@@ -18,9 +18,9 @@ export default function ClientList({ clients }) {
 
         })
     return (
-        <div>
+        <div className="admin__clientList">
             <h2>Client List</h2>
-            <ul>{allClients}</ul>
+            <div className="clientList">{allClients}</div>
         </div>
     )
 }

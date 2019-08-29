@@ -5,6 +5,7 @@ export default function ClientList({ clients }) {
     
     const allClients = clients.map(client => {
 
+        if (client.role !== "Admin") {
             return (
 
                 <ClientItem
@@ -15,6 +16,7 @@ export default function ClientList({ clients }) {
                     videos={client.videos}
                 />
             )
+        }
 
         })
     return (

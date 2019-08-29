@@ -11,7 +11,6 @@ mongoose.connect(
 );
 
 const nanoid = require("nanoid");
-const generator = require('generate-password');
 
 const db = mongoose.connection
 
@@ -24,7 +23,7 @@ router.get("/", (req, res) => {
 
     User.find((err, data) => {
         if (err) return res.json({ success: false, error: err });
-        
+
         return res.json({ data });
     });
     
@@ -58,10 +57,6 @@ router.post("/", (req, res) => {
         clientId: nanoid(5),
         name: req.body.name,
         email: req.body.email,
-        password: generator.generate({
-            length: 6,
-            numbers: true
-        }),
         role: "Client",
         videos: req.body.videos
     });

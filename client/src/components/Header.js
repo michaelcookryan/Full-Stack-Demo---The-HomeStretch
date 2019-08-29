@@ -6,6 +6,7 @@ export default function Header() {
         <header>
             <section>
                 <Link to="/"><h2>The HomeStretch</h2></Link>
+                
             </section>            
         </header>
     )

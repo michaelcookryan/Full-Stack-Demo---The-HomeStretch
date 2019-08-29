@@ -17,9 +17,9 @@ export default class ClientView extends Component {
     }
 
     componentDidMount() {
-        
+        console.log("made it to comp: ", this.props.clientId)
         // axios.get(`${clientsUrl}` + "/:id")
-        axios.get(clientsUrl + this.props.clientId).then(response => {
+        axios.get(clientsUrl + "/" + this.props.clientId).then(response => {
                
                 this.setState({
 

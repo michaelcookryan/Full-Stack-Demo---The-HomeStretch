@@ -15,8 +15,18 @@ class App extends React.Component {
 
   state = {
     access: false,
-    id:''
+    id:'',
+    role:''
   }
+
+componentDidMount(){
+  this.setState({
+    access:false,
+    id:null,
+    role:null
+  })
+  
+}
 
   findAndRedirect = event => {
     event.preventDefault()
@@ -29,19 +39,20 @@ class App extends React.Component {
 
       const currentUser = allUsers.find(user => user.email === searchByEmail)
      
-      let redirect = false
+          let redirect = false
 
-      if (currentUser.role !== "Admin") {
-        redirect = false
-      } else { 
-        redirect = true
-      }
+            if (currentUser.role !== "Admin") {
+              redirect = false
+            } else { 
+              redirect = true
+            }
 
-      this.setState({
-        access: redirect,
-        id: currentUser.clientId
-      })
-      console.log("id: ", this.state.id)
+            this.setState({
+              access: redirect,
+              id: currentUser.clientId,
+              role: currentUser.role
+            })
+     
     })
    
   }
@@ -52,16 +63,26 @@ class App extends React.Component {
  
     return (
       <div className="App">
-        <Header />
+        <Header returnToHome={this.returnToHomePage}/>
 
         <main>
           <Switch>
 
             <Route exact path="/" render={() => {
+
               if (this.state.access) {
-                return <Redirect to="/admin" />;
+
+                return (<Redirect to="/admin" />)
+                                                
+              }else if(this.state.role === "Client"){
+
+                return (<Redirect to={"/clients/" + `${this.state.id}`} />)
+                               
+              }else{
+
+                return (<Login findAndRedirect={this.findAndRedirect}/>)
               }
-              return (<Login findAndRedirect={this.findAndRedirect} />)
+          
             }} />
 
             <Route exact path="/admin" component={Admin} />           
@@ -69,11 +90,13 @@ class App extends React.Component {
             <Route path="/clients/:clientId/:videoId" render={(props) => {
     
               return (<ClientView clientId={this.state.id} {...props}/>)
+
             }} />
 
             <Route path="/clients/:clientId" render={(props) => {
               
               return (<ClientView clientId={this.state.id} {...props}/>)
+
             }} />
             
           </Switch>

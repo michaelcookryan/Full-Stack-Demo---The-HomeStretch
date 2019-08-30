@@ -2,8 +2,6 @@ import React from 'react'
 
 export default function Login({findAndRedirect}) {
 
-
-
     return (
         <section>
             <h1>Login</h1>

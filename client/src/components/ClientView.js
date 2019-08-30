@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import axios from "axios";
 import VideoPlayer from './VideoPlayer'
 import VideoList from './VideoList'
+import { Link } from 'react-router-dom'
 
 const clientsUrl = "http://localhost:8090/clients";
-
 
 export default class ClientView extends Component {
 
@@ -83,6 +83,7 @@ componentDidUpdate(prevProps) {
                 <h1>Videos for {this.state.name}</h1> 
                
                 <VideoPlayer current={this.state.current.url}/>
+                <Link to="/login"><button>Sign Out</button></Link>
                 <VideoList videos={this.state.videos} clientId={this.state.clientId}/>
 
             </section>

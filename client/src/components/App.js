@@ -3,7 +3,7 @@ import Header from './Header'
 import ClientView from './ClientView'
 import Admin from './Admin'
 import Login from './Login'
-import EditItem from './EditItem'
+// import EditItem from './EditItem'
 import "../styles/app.css"
 import axios from 'axios'
 import { Route, Switch, Redirect } from 'react-router-dom'
@@ -12,7 +12,7 @@ const clientsUrl = "http://localhost:8090/clients";
 
 
 class App extends React.Component {
-
+ 
   state = {
     access: false,
     id:'',
@@ -20,6 +20,7 @@ class App extends React.Component {
   }
 
 componentDidMount(){
+  
   this.setState({
     access:false,
     id:null,
@@ -28,8 +29,14 @@ componentDidMount(){
   
 }
 
-  findAndRedirect = event => {
+findAndRedirect = event => {
     event.preventDefault()
+ 
+  this.setState({
+    access: false,
+    id: null,
+    role: null
+  })
 
     const searchByEmail = event.target.email.value
 
@@ -55,7 +62,8 @@ componentDidMount(){
      
     })
    
-  }
+}
+
 
   
 
@@ -63,10 +71,11 @@ componentDidMount(){
  
     return (
       <div className="App">
-        <Header returnToHome={this.returnToHomePage}/>
+        <Header />
 
         <main>
           <Switch>
+            
 
             <Route exact path="/" render={() => {
 
@@ -76,17 +85,25 @@ componentDidMount(){
                                                 
               }else if(this.state.role === "Client"){
 
-                return (<Redirect to={"/clients/" + `${this.state.id}`} />)
+                return (<Redirect to={`/clients/${this.state.id}`} />)
                                
-              }else{
+              } else if(this.state.role === null){
 
                 return (<Login findAndRedirect={this.findAndRedirect}/>)
+
               }
           
             }} />
+            {/* <Route exact path="/login" render={() => {
+              return (<Redirect to="/" />)
+            }} /> */}
 
-            <Route exact path="/admin" component={Admin} />           
-           
+            <Route exact path="/admin" render={() =>{
+              return (<Admin />)
+            }}/>  
+
+            <Route path="/login" component={Login}/>
+
             <Route path="/clients/:clientId/:videoId" render={(props) => {
     
               return (<ClientView clientId={this.state.id} {...props}/>)

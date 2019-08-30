@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ClientList from "./ClientList";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const clientsUrl = "http://localhost:8090/clients";
 const videosUrl = "http://localhost:8090/videos";
@@ -108,6 +109,7 @@ showAllVideoOptions() {
             <button>Add</button>
           </form>
 
+          <Link to="/login"><button>Sign Out</button></Link> 
         </div>
       </section>
     );

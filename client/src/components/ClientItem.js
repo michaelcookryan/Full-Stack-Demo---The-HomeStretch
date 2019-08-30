@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default function ClientItem({ clientId, email, name, videos }) {
+export default function ClientItem({ clientId, email, name, videos, removeClient }) {
+
     return (
         <Link to={`/admin/${clientId}`} className="clientList__link">
             <div className="clientList__item">
@@ -11,7 +12,7 @@ export default function ClientItem({ clientId, email, name, videos }) {
                 <div className="clientList__item--videos">{videos.length} videos assigned</div>
                 <div className="clientList__item--buttons">
                     <button className="item__edit">Edit</button>
-                    <button className="item__delete">Delete</button>
+                    <button className="item__delete" onClick={(event)=>removeClient(event, clientId)}>Delete</button>
                 </div>
             </div>
         </Link>

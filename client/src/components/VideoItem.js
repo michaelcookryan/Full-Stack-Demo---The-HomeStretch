@@ -11,12 +11,10 @@ export default function VideoItem({videoId,title, clientId, unique}) {
                     <div className="video-thumb__copy">
                         <h4 className="video-thumb__copy--title">
                             {title}
-                        </h4>
+                        </h4>                       
                        
-                       
-                    </div>
-                  
-            </li> 
-        </Link > 
+                    </div>                 
+                </li> 
+            </Link > 
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import ClientItem from './ClientItem'
 
-export default function ClientList({ clients }) {
+export default function ClientList({ clients, removeClient }) {
     
     const allClients = clients.map(client => {
 
@@ -10,10 +10,11 @@ export default function ClientList({ clients }) {
 
                 <ClientItem
                     key={client._id}
-                    clientId={client.id}
+                    clientId={client.clientId}
                     name={client.name}
                     email={client.email}
                     videos={client.videos}
+                    removeClient={removeClient}
                 />
             )
         }

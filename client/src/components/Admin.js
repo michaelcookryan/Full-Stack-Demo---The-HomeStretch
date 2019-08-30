@@ -1,48 +1,61 @@
 import React, { Component } from "react";
 import ClientList from "./ClientList";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const clientsUrl = "http://localhost:8090/clients";
 const videosUrl = "http://localhost:8090/videos";
 
 
 export default class Admin extends Component {
+
   state = {
     clients: [],
+    clientId:'',
     videos: []
   };
+ 
+  settingStateForList= () => {
+        axios.get(clientsUrl)
+          .then(response => {
+           
+            this.setState({
 
-  componentDidMount() {
-    axios
-      .get(clientsUrl)
-      .then(response => {
-        this.setState({
-          clients: response.data.data
-        });
-      })
-      .catch(err => console.log(err));
+              clients: response.data.data,
+              clientId: response.data.data.clientId
 
-    axios
-      .get(videosUrl)
-      .then(response => {
+            });
 
-        this.setState({
-          videos: response.data.data
-        });
-      })
-      .catch(err => console.log(err));
+          }).catch(err => console.log(err));
+
+        axios.get(videosUrl)
+          .then(response => {
+
+            this.setState({
+
+              videos: response.data.data
+
+            });
+
+          }).catch(err => console.log(err));
   }
 
+
+  componentDidMount() {
+
+    this.settingStateForList()
+
+  }
   
 showAllVideoOptions() {
     const options = this.state.videos.map(video => {
 
-        return (
-          <div className="video__checkbox" key={video._id}>
-            <label>{video.title}</label>
-            <input type="checkbox" name="assignedVideos" value={video.videoId} />
-            </div>
+      return (
+          
+        <div className="video__checkbox" key={video._id}>
+          <label>{video.title}</label>
+          <input type="checkbox" name="assignedVideos" value={video.videoId} />
+        </div>
+        
         );
 
     });
@@ -57,36 +70,54 @@ showAllVideoOptions() {
     const assigned = [];
 
     for (let checkbox of selectedVideos) {
+
       if (checkbox.checked) {
+
         assigned.push(checkbox.value);
+
       }
     }
     
     let type = { "content-type": "application/json" };
 
-      const clientToAdd = {
-          name: event.target.name.value,
-          email: event.target.email.value,
-          videos: assigned
-      };
+    const clientToAdd = {
+        
+      name: event.target.name.value,
+      email: event.target.email.value,
+      videos: assigned
+          
+    };
 
-    axios
-      .post(clientsUrl, clientToAdd, type)
-      .then((response) => {
-          console.log(response.data)
-        axios
-          .get(clientsUrl)
-          .then(response => {
-            this.setState({
-              clients: response.data.data
-            });
-          })
-          .catch(err => console.log(err));
-      })
-      .catch(err => console.log(err));
+    axios.post(clientsUrl, clientToAdd, type)
+      .then((response) => {        
+          
+          axios.get(clientsUrl)
+            .then(response => {
 
-    event.target.reset();
+              this.setState({
+
+                clients: response.data.data
+
+              });
+
+            }).catch(err => console.log(err));
+          
+        }).catch(err => console.log(err));
+
+      event.target.reset();
   };
+
+  removeClient = (event, clientId) => {
+    
+    axios.delete(`${clientsUrl}/${clientId}`)
+      .then(response => {
+
+        this.settingStateForList()
+        
+      }).catch(err => console.log(err))
+
+  }
+
 
   render() {
  
@@ -94,7 +125,7 @@ showAllVideoOptions() {
       <section>
         <h1>Admin Page</h1>
 
-        <ClientList clients={this.state.clients} />
+        <ClientList clients={this.state.clients} removeClient={this.removeClient}/>
 
         <div className="admin__addNewForm">
           <h2>Add New Client</h2>
@@ -110,8 +141,6 @@ showAllVideoOptions() {
             <button>Add</button>
           </form>
 
-          {/* <Link to="/login"><button onClick={this.logOut}>Sign Out</button></Link>  */}
-          <Link to="/login"><button onClick={this.props.logOut}>Sign Out</button></Link> 
         </div>
       </section>
     );

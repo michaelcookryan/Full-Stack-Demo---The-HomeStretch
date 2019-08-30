@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from "axios";
 import VideoPlayer from './VideoPlayer'
 import VideoList from './VideoList'
-import { Link } from 'react-router-dom'
 
 const clientsUrl = "http://localhost:8090/clients";
 
@@ -17,8 +16,7 @@ export default class ClientView extends Component {
     }
 
     componentDidMount() {
-        console.log("made it to comp: ", this.props.clientId)
-        // axios.get(`${clientsUrl}` + "/:id")
+
         axios.get(clientsUrl + "/" + this.props.clientId).then(response => {
                
                 this.setState({
@@ -46,8 +44,10 @@ export default class ClientView extends Component {
                                 })
 
                                 this.setState({
+
                                     videos: currentClientVideosGroup,
                                     current: currentClientVideosGroup[0]
+
                                 })                    
                                 
                             }).catch(err => console.log(err))
@@ -61,20 +61,19 @@ export default class ClientView extends Component {
 componentDidUpdate(prevProps) {
 
     if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
-        console.log("previous: ", this.state.current)
 
         const copyCurrent = this.state.videos
 
         const newCurrent = copyCurrent.find(video => video.videoId === this.props.match.params.videoId)
 
-        console.log("new: ", newCurrent)
+        this.setState({
+                
+            current: newCurrent
+            
+        })       
 
-            this.setState({
-                current: newCurrent
-            })       
-
-      }
-  }
+    }
+}
 
     render() {
         
@@ -83,7 +82,6 @@ componentDidUpdate(prevProps) {
                 <h1>Videos for {this.state.name}</h1> 
                
                 <VideoPlayer current={this.state.current.url}/>
-                <Link to="/login"><button onClick={this.props.logOut}>Sign Out</button></Link>
                 <VideoList videos={this.state.videos} clientId={this.state.clientId}/>
 
             </section>

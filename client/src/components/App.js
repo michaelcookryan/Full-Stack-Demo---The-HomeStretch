@@ -28,12 +28,6 @@ componentDidMount(){
 findAndRedirect = event => {
     event.preventDefault()
  
-  this.setState({
-    access: false,
-    id: null,
-    role: null
-  })
-
     const searchByEmail = event.target.email.value
 
     axios.get(clientsUrl).then(response => {
@@ -50,24 +44,30 @@ findAndRedirect = event => {
               redirect = true
             }
 
-            this.setState({
-              access: redirect,
-              id: currentUser.clientId,
-              role: currentUser.role
-            })
+      this.setState({
+              
+        access: redirect,
+        id: currentUser.clientId,
+        role: currentUser.role
+              
+      })
      
     })
    
 }
-  logOut = event => { 
-    console.log("logout from app")
-    this.setState({
-      access: false,
-      id: null,
-      role: null
+
+  
+logOut = event => { 
+
+  this.setState({
+      
+    access: false,
+    id: null,
+    role: null
+      
     })
     
-  }
+}
 
   
 
@@ -75,12 +75,12 @@ findAndRedirect = event => {
  
     return (
       <div className="App">
+
         <Header logOut={this.logOut}/>
 
         <main>
           <Switch>
             
-
             <Route exact path="/" render={() => {
 
               if (this.state.access) {
@@ -98,6 +98,7 @@ findAndRedirect = event => {
               }
           
             }} />
+
             <Route exact path="/login" render={() => {
 
               if (this.state.access) {
@@ -115,25 +116,20 @@ findAndRedirect = event => {
               }
 
             }} />
-            {/* <Route exact path="/login" render={() => {
-              return (<Redirect to="/" />)
-            }} /> */}
 
-            <Route exact path="/admin" render={() =>{
-              return (<Admin logOut={this.logOut}/>)
-            }}/>  
+            <Route path="/admin" component={Admin} />
 
             <Route path="/login" findAndRedirect={this.findAndRedirect} component={Login}/>
 
             <Route path="/clients/:clientId/:videoId" render={(props) => {
     
-              return (<ClientView clientId={this.state.id} logOut={this.logOut} {...props}/>)
+              return (<ClientView clientId={this.state.id} {...props}/>)
 
             }} />
 
             <Route path="/clients/:clientId" render={(props) => {
               
-              return (<ClientView clientId={this.state.id} logOut={this.logOut} {...props}/>)
+              return (<ClientView clientId={this.state.id} {...props}/>)
 
             }} />
             

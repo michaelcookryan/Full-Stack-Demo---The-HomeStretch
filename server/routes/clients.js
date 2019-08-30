@@ -94,8 +94,16 @@ router.put("/", (req, res) => {
 
 });
 
-router.delete("/", (req, res) => {
-    res.send("DELETE string"); //change to json
+router.delete("/:id", (req, res) => {
+    const query = { clientId: req.params.id };
+console.log(req.params.id)
+    User.deleteOne(query)
+        .then(response => {
+
+            return res.json({ response });
+
+        }).catch(err => console.error(`Failed to remove document: ${err}`))
+
 });
 
 

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ClientList from "./ClientList";
+import EditItem from "./EditItem";
 import axios from "axios";
+import VideoOptions from "./VideoOptions"
 
 const clientsUrl = "http://localhost:8090/clients";
 const videosUrl = "http://localhost:8090/videos";
@@ -11,7 +13,10 @@ export default class Admin extends Component {
   state = {
     clients: [],
     clientId:'',
-    videos: []
+    videos: [],
+    isActive:false,
+    currentDataForEdit: {},
+    defaultEmpty:[]
   };
  
   settingStateForList= () => {
@@ -107,6 +112,15 @@ showAllVideoOptions() {
       event.target.reset();
   };
 
+
+  updateClient = (event, id) => {
+    console.log("updated client ",id)
+  }
+
+
+
+
+
   removeClient = (event, clientId) => {
     
     axios.delete(`${clientsUrl}/${clientId}`)
@@ -119,13 +133,59 @@ showAllVideoOptions() {
   }
 
 
+
+  showEditor = (event, clientId) => {
+    event.preventDefault() 
+
+    this.setState({
+
+      isActive: !this.state.isActive
+
+    })
+
+  
+
+    axios.get(`${clientsUrl}/${clientId}`).then(response => {
+
+      this.setState({
+
+        currentDataForEdit: response.data.response
+
+      })
+
+    }).catch(err => console.log(err))
+    
+  }
+
+
+
+ clientEditor = (retrievedData) => {
+   if(this.state.isActive && retrievedData){
+
+    return <EditItem
+      clientId={retrievedData.clientId}
+      name={retrievedData.name}
+      email={retrievedData.email}
+      videos={retrievedData.videos}
+      showEditor={this.showEditor}
+      updateClient={this.updateClient}
+     
+      />
+   }
+
+  return
+ }
+
+
   render() {
- 
+
+      
+
     return (
       <section>
         <h1>Admin Page</h1>
 
-        <ClientList clients={this.state.clients} removeClient={this.removeClient}/>
+        <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive}/>
 
         <div className="admin__addNewForm">
           <h2>Add New Client</h2>
@@ -135,14 +195,21 @@ showAllVideoOptions() {
             <input type="email" name="email" placeholder="email" required />
             
             <div className="select-videos">              
-                {this.showAllVideoOptions()}
+               
+              <VideoOptions allVideos={this.state.videos} assigned={this.state.defaultEmpty}/>
             </div>
             
             <button>Add</button>
           </form>
 
         </div>
+
+      <div className="client__editor">{this.clientEditor(this.state.currentDataForEdit)}</div>
+
       </section>
+
+     
+  
     );
   }
 }

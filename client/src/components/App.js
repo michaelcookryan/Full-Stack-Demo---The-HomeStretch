@@ -21,11 +21,7 @@ class App extends React.Component {
 
 componentDidMount(){
   
-  this.setState({
-    access:false,
-    id:null,
-    role:null
-  })
+  this.logOut()
   
 }
 
@@ -63,7 +59,15 @@ findAndRedirect = event => {
     })
    
 }
-
+  logOut = event => { 
+    console.log("logout from app")
+    this.setState({
+      access: false,
+      id: null,
+      role: null
+    })
+    
+  }
 
   
 
@@ -71,7 +75,7 @@ findAndRedirect = event => {
  
     return (
       <div className="App">
-        <Header />
+        <Header logOut={this.logOut}/>
 
         <main>
           <Switch>
@@ -94,25 +98,42 @@ findAndRedirect = event => {
               }
           
             }} />
+            <Route exact path="/login" render={() => {
+
+              if (this.state.access) {
+
+                return (<Redirect to="/admin" />)
+
+              } else if (this.state.role === "Client") {
+
+                return (<Redirect to={`/clients/${this.state.id}`} />)
+
+              } else if (this.state.role === null) {
+
+                return (<Login findAndRedirect={this.findAndRedirect} />)
+
+              }
+
+            }} />
             {/* <Route exact path="/login" render={() => {
               return (<Redirect to="/" />)
             }} /> */}
 
             <Route exact path="/admin" render={() =>{
-              return (<Admin />)
+              return (<Admin logOut={this.logOut}/>)
             }}/>  
 
-            <Route path="/login" component={Login}/>
+            <Route path="/login" findAndRedirect={this.findAndRedirect} component={Login}/>
 
             <Route path="/clients/:clientId/:videoId" render={(props) => {
     
-              return (<ClientView clientId={this.state.id} {...props}/>)
+              return (<ClientView clientId={this.state.id} logOut={this.logOut} {...props}/>)
 
             }} />
 
             <Route path="/clients/:clientId" render={(props) => {
               
-              return (<ClientView clientId={this.state.id} {...props}/>)
+              return (<ClientView clientId={this.state.id} logOut={this.logOut} {...props}/>)
 
             }} />
             

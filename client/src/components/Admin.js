@@ -89,6 +89,7 @@ showAllVideoOptions() {
   };
 
   render() {
+ 
     return (
       <section>
         <h1>Admin Page</h1>
@@ -109,7 +110,8 @@ showAllVideoOptions() {
             <button>Add</button>
           </form>
 
-          <Link to="/login"><button>Sign Out</button></Link> 
+          {/* <Link to="/login"><button onClick={this.logOut}>Sign Out</button></Link>  */}
+          <Link to="/login"><button onClick={this.props.logOut}>Sign Out</button></Link> 
         </div>
       </section>
     );

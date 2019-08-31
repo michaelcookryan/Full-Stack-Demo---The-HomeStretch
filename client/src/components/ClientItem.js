@@ -5,7 +5,7 @@ import EditItem from './EditItem';
 const clientsUrl = "http://localhost:8090/clients";
 const videosUrl = "http://localhost:8090/videos";
 
-// export default function ClientItem({ clientId, email, name, videos, removeClient, showEditor}) {
+
 export default class ClientItem extends Component {
 
     state = {
@@ -28,59 +28,19 @@ export default class ClientItem extends Component {
     clientEditor = (retrievedData) => {
         
         if (this.state.isActive && retrievedData) {
-            // console.log("in clientEditor of Admin: ", retrievedData.videos)
-            // console.log("in clientEditor of retrieved: ", this.state.currentDataForEdit)
+
             return <EditItem
                 clientId={retrievedData.clientId}
                 name={retrievedData.name}
                 email={retrievedData.email}
                 videos={retrievedData.videos}
                 showEditor={this.showEditor}
-                // updateClient={this.updateClient}
                 allVideos={this.state.allVideos}
                 
             />
         }
     }
 
-//     updateClient = (event, id) => {
-//         const selectedVideos = event.target.assignedVideos;
-//         const assigned = [];
-//         console.log(selectedVideos)
-//         console.log(typeof selectedVideos)
-//         for (let checkbox of selectedVideos) {
-
-//             if (checkbox.checked) {
-
-//                 assigned.push(checkbox.value);
-
-//             }
-//         }
-
-//         // let type = { "content-type": "application/json" };
-
-//         const clientToUpdate = {
-//             clientId: id,
-//             videos: assigned
-//         }
-//         axios.put(clientsUrl, clientToUpdate)
-//             .then((response) => {
-// console.log(response.data.data)
-//                 axios.get(clientsUrl)
-//                     .then(response => {
-
-//                         this.setState({
-
-//                             clients: response.data.data
-
-//                         });
-
-//                     }).catch(err => console.log(err));
-
-//             }).catch(err => console.log(err));
-
-//         event.target.reset();
-//     };
 
 
     componentDidMount() {
@@ -104,7 +64,7 @@ export default class ClientItem extends Component {
             })
 
         }).catch(err => console.log(err))
-        // console.log("in didMount of editItem: ", this.props.videos)
+ 
     }
     render() {
         return (

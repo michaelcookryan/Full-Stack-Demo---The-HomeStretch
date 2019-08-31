@@ -44,8 +44,10 @@ router.get("/:id", (req, res) => {
 router.get("/:id/videos", (req, res) => {
    
     Video.find((err, data) => {
+
         if (err) return res.json({ success: false, error: err });
         return res.json({ data });
+
     });
   
 
@@ -63,25 +65,27 @@ router.post("/", (req, res) => {
 
 
     user.save((err) => {
+
         if (err) return res.json({ success: false, error: err });
         return res.json(user);
+
     });
 
 });
 
 router.put("/:id", (req, res) => {
-    console.log("router: ", req.body.clientId)
-    console.log("router: ", req.body.videos)
-    User.update({ "clientId": req.body.clientId },
-        {$set: {"videos": req.body.videos}})
-    
-    // return res.send({ response });
 
-    // }).catch(err => console.error(`Failed to update document: ${err}`))
+    User.findOneAndUpdate({ clientId: req.body.clientId }, { videos: req.body.videos })
+        .then(() => {
+        
+            console.log("Updated client: ", req.body.clientId)
+
+    }).catch(err => console.error(`Failed to update document: ${err}`))
 
 });
 
 router.delete("/:id", (req, res) => {
+
     const query = { clientId: req.params.id };
 
     User.deleteOne(query)

@@ -16,7 +16,7 @@ export default class Admin extends Component {
     videos: [],
     isActive:false,
     currentDataForEdit: {},
-    defaultEmpty:[]
+    defaultEmpty:['video']
   };
  
   settingStateForList= () => {
@@ -143,8 +143,6 @@ showAllVideoOptions() {
 
     })
 
-  
-
     axios.get(`${clientsUrl}/${clientId}`).then(response => {
 
       this.setState({
@@ -161,7 +159,8 @@ showAllVideoOptions() {
 
  clientEditor = (retrievedData) => {
    if(this.state.isActive && retrievedData){
-
+     console.log("in clientEditor of Admin: ", retrievedData.videos)
+     console.log("in clientEditor of retrieved: ", this.state.currentDataForEdit)
     return <EditItem
       clientId={retrievedData.clientId}
       name={retrievedData.name}
@@ -169,7 +168,7 @@ showAllVideoOptions() {
       videos={retrievedData.videos}
       showEditor={this.showEditor}
       updateClient={this.updateClient}
-     
+      assigned={this.state.defaultEmpty}
       />
    }
 

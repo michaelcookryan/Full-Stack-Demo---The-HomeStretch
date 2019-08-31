@@ -22,7 +22,7 @@ export default class EditItem extends Component {
                 });
 
             }).catch(err => console.log(err));   
-        
+        console.log("in didMount of editItem: ",this.props.videos)
     }
 
 
@@ -49,6 +49,7 @@ export default class EditItem extends Component {
 
                     <button onClick={(event) => this.props.showEditor(event, this.props.clientId)}>Clear</button>
                     <button onClick={(event) => this.props.updateClient(event, this.props.clientId)}>Save</button>
+
                 </form>
             </div>
         )

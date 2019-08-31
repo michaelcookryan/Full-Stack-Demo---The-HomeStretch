@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ClientList from "./ClientList";
-// import EditItem from "./EditItem";
 import axios from "axios";
 import VideoOptions from "./VideoOptions"
 
@@ -16,7 +15,6 @@ export default class Admin extends Component {
     videos: [],
     isActive: false,
     isLoading:true,
-    // currentDataForEdit: {},
     defaultEmpty:['video']
   };
  
@@ -69,7 +67,7 @@ showAllVideoOptions() {
     return options;
 }
 
-  addClient = event => {
+addClient = event => {
     event.preventDefault();
 
     const selectedVideos = event.target.assignedVideos;   
@@ -111,9 +109,9 @@ showAllVideoOptions() {
         }).catch(err => console.log(err));
 
       event.target.reset();
-  };
+};
 
-  removeClient = (event, clientId) => {
+removeClient = (event, clientId) => {
     
     axios.delete(`${clientsUrl}/${clientId}`)
       .then(response => {
@@ -122,12 +120,9 @@ showAllVideoOptions() {
         
       }).catch(err => console.log(err))
 
-  }
-
+}
 
   render() {
-
-      
 
     return (
       <section>
@@ -144,7 +139,8 @@ showAllVideoOptions() {
             
             <div className="select-videos">              
                
-              <VideoOptions allVideos={this.state.videos} assigned={this.state.defaultEmpty}/>
+              <VideoOptions allVideos={this.state.videos} assigned={this.state.defaultEmpty} />
+              
             </div>
             
             <button>Add</button>

@@ -76,16 +76,14 @@ export default class ClientItem extends Component {
                 <div className="clientList__item--videos">{this.props.videos.length} videos assigned</div>
                 <div className="clientList__item--buttons">
 
-                    {/* <button className="item__edit" onClick={(event) => showEditor(event, clientId)}>Edit</button> */}
-
                     <button className="item__delete" onClick={(event) => this.props.removeClient(event, this.props.clientId)}>Remove</button>
 
                 </div>
-                {/* <div className="client__editor">{this.clientEditor(this.state.currentDataForEdit)}</div> */}
+
             </div>
         
             <div className="client__editor">{this.clientEditor(this.state.currentDataForEdit)}</div>
-            </div>
+        </div>
         )
     }
 }

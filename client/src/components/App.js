@@ -3,7 +3,6 @@ import Header from './Header'
 import ClientView from './ClientView'
 import Admin from './Admin'
 import Login from './Login'
-// import EditItem from './EditItem'
 import "../styles/app.css"
 import axios from 'axios'
 import { Route, Switch, Redirect } from 'react-router-dom'

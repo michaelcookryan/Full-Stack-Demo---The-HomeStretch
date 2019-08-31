@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import VideoOptions from './VideoOptions'
+import axios from 'axios'
 
 const clientsUrl = "http://localhost:8090/clients";
 
@@ -48,7 +48,7 @@ export default class EditItem extends Component {
             <div>
                 <h3>Client Name: {this.props.name}</h3>
                 <h3>Contact Info: {this.props.email}</h3>
-                
+
                 <form onSubmit={this.updateClient}>
                     <div className="select-videos">
                        

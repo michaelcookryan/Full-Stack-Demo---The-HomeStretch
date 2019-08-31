@@ -1,7 +1,7 @@
 import React from "react"
 import Header from './Header'
-import ClientView from './ClientView'
-import Admin from './Admin'
+import ClientView from './ClientView/ClientView'
+import Admin from './AdminView/Admin'
 import Login from './Login'
 import "../styles/app.css"
 import axios from 'axios'

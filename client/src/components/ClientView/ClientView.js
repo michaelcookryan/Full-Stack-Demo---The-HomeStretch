@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import VideoPlayer from './components/VideoPlayer'
+import VideoList from './components/VideoList'
 import axios from "axios";
-import VideoPlayer from './VideoPlayer'
-import VideoList from './VideoList'
 
 const clientsUrl = "http://localhost:8090/clients";
 

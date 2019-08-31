@@ -1,9 +1,6 @@
 import React from 'react'
 
 export default function VideoOptions({allVideos, assigned}) {
-    
-    // let clientList = assigned
-    // let mainList = allVideos
 
     const options = allVideos.map(video => {
 

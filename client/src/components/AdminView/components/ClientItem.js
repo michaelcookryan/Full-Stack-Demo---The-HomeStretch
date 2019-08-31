@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import EditItem from './EditItem';
+import axios from 'axios'
 
 const clientsUrl = "http://localhost:8090/clients";
 const videosUrl = "http://localhost:8090/videos";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ClientList from "./ClientList";
-import EditItem from "./EditItem";
+// import EditItem from "./EditItem";
 import axios from "axios";
 import VideoOptions from "./VideoOptions"
 
@@ -14,8 +14,9 @@ export default class Admin extends Component {
     clients: [],
     clientId:'',
     videos: [],
-    isActive:false,
-    currentDataForEdit: {},
+    isActive: false,
+    isLoading:true,
+    // currentDataForEdit: {},
     defaultEmpty:['video']
   };
  
@@ -112,15 +113,6 @@ showAllVideoOptions() {
       event.target.reset();
   };
 
-
-  updateClient = (event, id) => {
-    console.log("updated client ",id)
-  }
-
-
-
-
-
   removeClient = (event, clientId) => {
     
     axios.delete(`${clientsUrl}/${clientId}`)
@@ -131,49 +123,6 @@ showAllVideoOptions() {
       }).catch(err => console.log(err))
 
   }
-
-
-
-  showEditor = (event, clientId) => {
-    event.preventDefault() 
-
-    this.setState({
-
-      isActive: !this.state.isActive
-
-    })
-
-    axios.get(`${clientsUrl}/${clientId}`).then(response => {
-
-      this.setState({
-
-        currentDataForEdit: response.data.response
-
-      })
-
-    }).catch(err => console.log(err))
-    
-  }
-
-
-
- clientEditor = (retrievedData) => {
-   if(this.state.isActive && retrievedData){
-     console.log("in clientEditor of Admin: ", retrievedData.videos)
-     console.log("in clientEditor of retrieved: ", this.state.currentDataForEdit)
-    return <EditItem
-      clientId={retrievedData.clientId}
-      name={retrievedData.name}
-      email={retrievedData.email}
-      videos={retrievedData.videos}
-      showEditor={this.showEditor}
-      updateClient={this.updateClient}
-      assigned={this.state.defaultEmpty}
-      />
-   }
-
-  return
- }
 
 
   render() {
@@ -202,8 +151,6 @@ showAllVideoOptions() {
           </form>
 
         </div>
-
-      <div className="client__editor">{this.clientEditor(this.state.currentDataForEdit)}</div>
 
       </section>
 

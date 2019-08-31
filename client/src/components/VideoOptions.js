@@ -2,12 +2,12 @@ import React from 'react'
 
 export default function VideoOptions({allVideos, assigned}) {
     
-    let clientList = assigned
-    let mainList = allVideos
+    // let clientList = assigned
+    // let mainList = allVideos
 
-    const options = mainList.map(video => {
+    const options = allVideos.map(video => {
 
-        let searched = clientList.indexOf(video.videoId)
+        let searched = assigned.indexOf(video.videoId)
 
         if(searched !== -1){
 

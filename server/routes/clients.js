@@ -69,28 +69,15 @@ router.post("/", (req, res) => {
 
 });
 
-router.put("/", (req, res) => {
+router.put("/:id", (req, res) => {
+    console.log("router: ", req.body.clientId)
+    console.log("router: ", req.body.videos)
+    User.update({ "clientId": req.body.clientId },
+        {$set: {"videos": req.body.videos}})
+    
+    // return res.send({ response });
 
-    // let userUpdated = new User({
-    //     name: req.body.name,
-    //     email: req.body.email,
-    //     videos: req.body.videos
-    // })
-    // User.find((err, data) => {
-    //     console.log("Data: ", data)
-    //     if (err) return res.json({ success: false, error: err });
-    //     // return res.json({ success: true, data: data });
-
-    //     userUpdated.save((err) => {
-    //         if (err) return res.json({ success: false, error: err });
-    //         return res.json(userUpdated);
-    //     });
-    // });
-
-    // newInfo.save((err) => {
-    //     if (err) return res.json({ success: false, error: err });
-    //     return res.json(user);
-    // });
+    // }).catch(err => console.error(`Failed to update document: ${err}`))
 
 });
 

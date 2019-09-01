@@ -14,8 +14,8 @@
 }
 
 header {
-  height: 100px;
   padding: 1em 0;
+  width: 100%;
   background: rgba(41, 194, 251, 0.7);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -93,9 +93,6 @@ header section a button {
 
 footer {
   background: rgba(237, 192, 25, 0.8);
-  margin-top: 15vh;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   color: #fff;
 }
@@ -115,11 +112,10 @@ body {
   margin: 0;
   color: #323232;
   font-family: "AvenirNextLTPro-Regular";
+}
+
+.App {
   height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(126, 208, 38, 0.7)), to(rgba(126, 208, 38, 0.7))), url("../assets/images/massage-room.jpg");
-  background: linear-gradient(rgba(126, 208, 38, 0.7), rgba(126, 208, 38, 0.7)), url("../assets/images/massage-room.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 h1 {
@@ -163,16 +159,16 @@ h5 {
 }
 
 section {
-  width: 100%;
-  max-width: 720px;
+  width: 90%;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
 main {
-  width: 90%;
-  max-width: 720px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
-  height: 71vh;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,29 +179,35 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(126, 208, 38, 0.7)), to(rgba(126, 208, 38, 0.7))), url("../assets/images/massage-room.jpg");
+  background: linear-gradient(rgba(126, 208, 38, 0.7), rgba(126, 208, 38, 0.7)), url("../assets/images/massage-room.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 button {
   text-transform: uppercase;
-  padding: 1.1em 2em;
+  padding: 1em 2em;
   background: #0095FF;
   color: #fff;
   border-radius: 50px;
   border: none;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+  font-size: 1rem;
 }
 
 button:hover {
-  background: #0065AD;
+  background: #ff5992;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 
 button:active, button:visited, button:focus {
-  background: #0095FF;
+  background: #ff5992;
 }
 
 button:focus {
@@ -220,30 +222,35 @@ input, textarea {
   width: 100%;
   margin: 0 0 2.2em 0;
   padding: 1em;
+  font-size: 1rem;
 }
 
 textarea,
 textarea::-webkit-input-placeholder,
 input::-webkit-input-placeholder {
   font-family: "AvenirNextLTPro-Regular";
+  font-size: 1rem;
 }
 
 textarea,
 textarea:-ms-input-placeholder,
 input:-ms-input-placeholder {
   font-family: "AvenirNextLTPro-Regular";
+  font-size: 1rem;
 }
 
 textarea,
 textarea::-ms-input-placeholder,
 input::-ms-input-placeholder {
   font-family: "AvenirNextLTPro-Regular";
+  font-size: 1rem;
 }
 
 textarea,
 textarea::placeholder,
 input::placeholder {
   font-family: "AvenirNextLTPro-Regular";
+  font-size: 1rem;
 }
 
 input:focus, textarea:focus {
@@ -259,11 +266,6 @@ input:focus, textarea:focus {
   h4 {
     font-size: .88rem;
     line-height: 1.4rem;
-  }
-  main, section {
-    width: 100%;
-    max-width: 1080px;
-    margin: 0 auto;
   }
 }
 /*# sourceMappingURL=app.css.map */

@@ -1,11 +1,12 @@
 header{
-    height:100px;
     padding:1em 0;
+    width:100%;
     background:rgba(41,194,251,0.7);
     display: flex;
     justify-content: space-between;
     align-items:center;
-    section{
+
+   section{
         display: flex;
         justify-content: space-between;
         align-items:center;

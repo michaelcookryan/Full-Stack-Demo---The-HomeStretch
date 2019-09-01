@@ -30,12 +30,15 @@ body{
     margin:0;
     color:$main-black;
     font-family: $regular;
-    height:100vh;
-    background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
-    background-repeat: no-repeat;
-    background-size:cover;
+    // height:100vh;
+    // background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    // background-repeat: no-repeat;
+    // background-size:cover;
     // background-color:rgba(126,208,38,0.7);
  
+}
+.App{
+    height:100vh;
 }
 h1{
   font-family: $sauna-bold;
@@ -75,35 +78,39 @@ h5{
     text-transform: uppercase;
 }
 section{
-    @include container(100%, 720px, auto);
+    @include container(90%, 1080px, auto);
 }
 main{
-    @include container(90%, 720px, auto);
-    height: 71vh;
+    @include container(100%, none, auto);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
     
 }
 button{
     text-transform: uppercase;
-    padding:1.1em 2em;
+    padding:1em 2em;
     background:$primary-cta-text-link;
     color:#fff;
     border-radius:50px;
     border:none;
     transition: all .2s ease-in-out;
+    font-size:1rem;
     
     &:hover
    {
-        background:$primary-cta-hover;
+        background:$blush;
         transition: all .2s ease-in-out;
     }
     &:active,
     &:visited,
     &:focus{
-        background:$primary-cta-text-link;
+        background:$blush;
     }
 
     &:focus{
@@ -117,12 +124,14 @@ button{
             outline:none;
             width:100%;
             margin:0 0 2.2em 0;
-            padding:1em
+            padding:1em;
+            font-size:1rem;
         }
 textarea, 
 textarea::placeholder,
 input::placeholder{
     font-family:$regular;
+    font-size:1rem;
 }
 input:focus, textarea:focus{
     border-color:$primary-cta-text-link;
@@ -141,7 +150,10 @@ input:focus, textarea:focus{
         font-size:.88rem;
         line-height:1.4rem;
     }
-  main, section{
-        @include container(100%, 1080px, auto); 
-    }
+//   section{
+//         @include container(90%, 1080px, auto); 
+//     }
+//     main{
+//         @include container(100%, 1080px, auto); 
+//     }
 }

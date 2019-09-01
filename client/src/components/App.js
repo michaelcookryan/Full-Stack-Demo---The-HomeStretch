@@ -76,9 +76,10 @@ logOut = event => {
     return (
       <div className="App">
 
-        <Header logOut={this.logOut}/>
+        {/* <Header logOut={this.logOut}/> */}
 
         <main>
+          <Header logOut={this.logOut} />
           <Switch>
             
             <Route exact path="/" render={() => {
@@ -134,8 +135,9 @@ logOut = event => {
             }} />
             
           </Switch>
+          <Footer />
         </main>
-      <Footer/>
+      {/* <Footer/> */}
       </div>
     );
   }

@@ -1,10 +1,28 @@
 .video-options {
-  width: 100px;
-  margin-right: 1em;
+  width: auto;
+
+
+  label{
+      font-size: .9em;
+      padding:.5em 1em;
+      border-radius:20px;
+      background:#fff;
+      color:$orchid;
+      border:2px solid #fff;
+    }
 
   &__checkbox {
-    visibility: hidden;
     width: auto;
-    margin-right: 0.5em;
+    visibility: hidden;
+    
+
+    
+
+    &:checked + label {
+      background:$orchid;
+      color:#fff;
+    }
   }
+  
+
 }

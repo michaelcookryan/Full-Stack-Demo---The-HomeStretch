@@ -58,23 +58,35 @@ header section a button {
 
 .login {
   padding: 23% 0 30.2%;
+  height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.login__title {
+.login .login-container__title {
   margin: 0;
   font-size: 7rem;
   line-height: 6rem;
   color: #fff;
-  text-shadow: 3px 3px 5px grey;
+  text-shadow: 3px 3px 5px #567c18;
 }
 
-.login__subtitle {
+.login .login-container__subtitle {
   color: #fff;
   font-size: 1.3rem;
   margin: 1rem 0 4rem 0;
 }
 
-.login__form {
+.login .login-container__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,13 +98,17 @@ header section a button {
           align-items: center;
 }
 
-.login__form input {
+.login .login-container__form input {
   width: 300px;
   margin: 0 0.8em 0 0;
 }
 
-.login__form button {
+.login .login-container__form button {
   background: #841983;
+}
+
+.login .login-container__form button:hover {
+  background: #ff5992;
 }
 
 .admin__clientList .clientList {
@@ -114,6 +130,12 @@ header section a button {
   background: #fff;
   border-radius: 10px;
   margin: 0 1em 1em 0;
+  -webkit-box-shadow: 2px 2px 4px #567c18;
+          box-shadow: 2px 2px 4px #567c18;
+}
+
+.admin-section {
+  padding: 2.2em 0 14em;
 }
 
 .admin-section__title {
@@ -134,12 +156,26 @@ header section a button {
           align-items: flex-start;
 }
 
+.admin-section .admin-columns h2 {
+  color: #FAFAFA;
+  margin: .5em 0 1em;
+}
+
 .admin-section .admin-columns__list {
-  width: 58%;
+  width: 54%;
 }
 
 .admin-section .admin-columns__form {
-  width: 40%;
+  width: 43%;
+  padding: 1.5em 1em;
+  background: rgba(86, 124, 24, 0.3);
+  border-radius: 15px;
+}
+
+.admin-section .admin-columns__form form .admin-form-input {
+  margin-bottom: 1em;
+  width: 90%;
+  padding: .7em;
 }
 
 .admin-section .admin-columns__form form .select-videos {
@@ -154,6 +190,11 @@ header section a button {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  margin: 1.5em 0 2.5em;
+}
+
+.admin-section .admin-columns__form form button {
+  float: right;
 }
 
 footer {
@@ -163,14 +204,26 @@ footer {
 }
 
 .video-options {
-  width: 200px;
-  margin-right: 1em;
+  width: auto;
+}
+
+.video-options label {
+  font-size: .9em;
+  padding: .5em 1em;
+  border-radius: 20px;
+  background: #fff;
+  color: #841983;
+  border: 2px solid #fff;
 }
 
 .video-options__checkbox {
-  visibility: hidden;
   width: auto;
-  margin-right: .5em;
+  visibility: hidden;
+}
+
+.video-options__checkbox:checked + label {
+  background: #841983;
+  color: #fff;
 }
 
 html {

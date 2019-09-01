@@ -68,8 +68,8 @@ export default class ClientItem extends Component {
     }
     render() {
         return (
-            <div className="clientList__wrapper" onClick={(event) => this.showEditor(event, this.props.clientId)}>
-            <div className="clientList__item" >
+            <div className="clientList__wrapper">
+                <div className="clientList__item" onClick={(event) => this.showEditor(event, this.props.clientId)}>
                 <div className="clientList__item--name">{this.props.name}</div>
                 {/* <div className="clientList__item--id">{this.props.clientId}</div> */}
                 <div className="clientList__item--email">{this.props.email}</div>

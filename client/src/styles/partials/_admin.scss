@@ -1,5 +1,5 @@
 .admin-section{
-
+    padding:2.2em 0 14em;
     &__title{
         font-size:3.5rem;
         line-height:2rem;
@@ -12,20 +12,35 @@
         justify-content: space-between;
         align-items:flex-start;
 
+        h2{
+            color:$text-field-bg;
+            margin:.5em 0 1em;
+        }
         &__list{
-            width:58%;
+            width:54%;
         }
 
         &__form{
-            width:40%;
+            width:43%;
+            padding:1.5em 1em;
+            background: rgba(86, 124, 24, 0.3);
+            border-radius: 15px;
 
             form{
-
+                .admin-form-input{
+                    margin-bottom: 1em;
+                    width: 90%;
+                    padding: .7em;
+                }
                 .select-videos{
                      display:flex;
                      flex-wrap:wrap;
                      justify-content:flex-start;
                      align-items: flex-start;
+                     margin:1.5em 0 2.5em;
+                }
+                button{
+                    float:right;
                 }
             }
         }

@@ -1,12 +1,21 @@
 .login{
     padding: 23% 0 30.2%;
-        &__title{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+
+    .login-container{
+
+         &__title{
             margin:0;
             font-size: 7rem;
             line-height: 6rem;
             color:#fff;
-            text-shadow: 3px 3px 5px grey;
+            text-shadow: 3px 3px 5px $pea-shadow;
         }
+
         &__subtitle{
             color:#fff;
             font-size:1.3rem;
@@ -25,8 +34,13 @@
             }
             button{
                 background: $orchid;
+                &:hover{
+                    background: $blush;
+                }
             }
         }
+    }
+       
 }
 
 

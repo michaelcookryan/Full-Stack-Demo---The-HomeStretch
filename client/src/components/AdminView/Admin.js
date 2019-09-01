@@ -138,8 +138,8 @@ removeClient = (event, clientId) => {
             <h2>Add New Client</h2>
 
             <form onSubmit={this.addClient}>
-              <input type="text" name="name" placeholder="name" required />
-              <input type="email" name="email" placeholder="email" required />
+              <input className="admin-form-input" type="text" name="name" placeholder="name" required />
+              <input className="admin-form-input" type="email" name="email" placeholder="email" required />
               
               <div className="select-videos">              
                 

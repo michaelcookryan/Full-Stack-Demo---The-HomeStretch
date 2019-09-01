@@ -7,7 +7,7 @@ export default function Header({logOut}) {
         <header>
             <section>
                 <Link to="/"><h2>The HomeStretch</h2></Link>
-                <Link to="/login"><button onClick={logOut}>Sign Out</button></Link>
+                <Link to="/login"><button onClick={logOut}>Check Out</button></Link>
             </section>            
         </header>
     )

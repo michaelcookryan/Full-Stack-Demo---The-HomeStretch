@@ -25,10 +25,11 @@ body{
     font-family: $regular;
 }
 h1{
-  font-family: $roboto;
-  font-size:1.5rem;
+  font-family: $sauna-bold;
+  font-size:3.5rem;
   line-height:2rem;
-  margin-top:2rem;  
+  margin-top:2rem; 
+//   font-style:italic; 
 }
 h2{
     font-family: $roboto;
@@ -118,7 +119,7 @@ input:focus, textarea:focus{
 
 @media screen and(min-width:768px){
     h1{
-        font-size:2.25rem;
+        font-size:5.25rem;
         line-height:2.75rem; 
         margin-top:3rem; 
     }

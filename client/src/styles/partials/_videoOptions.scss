@@ -1,0 +1,10 @@
+.video-options {
+  width: 100px;
+  margin-right: 1em;
+
+  &__checkbox {
+    visibility: hidden;
+    width: auto;
+    margin-right: 0.5em;
+  }
+}

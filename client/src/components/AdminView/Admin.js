@@ -125,29 +125,33 @@ removeClient = (event, clientId) => {
   render() {
 
     return (
-      <section>
-        <h1>Admin Page</h1>
+      <section className="admin-section">
+        <h1 className="admin-section__title">Therapist's Dashboard</h1>
 
-        <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive}/>
+        <div className="admin-columns">
 
-        <div className="admin__addNewForm">
-          <h2>Add New Client</h2>
-
-          <form onSubmit={this.addClient}>
-            <input type="text" name="name" placeholder="name" required />
-            <input type="email" name="email" placeholder="email" required />
+          <div className="admin-columns__list">
+            <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive}/>
+          </div>
             
-            <div className="select-videos">              
-               
-              <VideoOptions allVideos={this.state.videos} assigned={this.state.defaultEmpty} />
+          <div className="admin-columns__form">
+            <h2>Add New Client</h2>
+
+            <form onSubmit={this.addClient}>
+              <input type="text" name="name" placeholder="name" required />
+              <input type="email" name="email" placeholder="email" required />
               
-            </div>
-            
-            <button>Add</button>
-          </form>
+              <div className="select-videos">              
+                
+                <VideoOptions allVideos={this.state.videos} assigned={this.state.defaultEmpty} />
+                
+              </div>
+              
+              <button>Add</button>
+            </form>
 
+          </div>
         </div>
-
       </section>
 
      

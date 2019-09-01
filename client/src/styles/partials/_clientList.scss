@@ -1,0 +1,17 @@
+.admin__clientList{
+
+    .clientList{
+
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        &__wrapper{
+            padding:1.5em;
+            background: #fff;
+            border-radius: 10px;
+            margin:0 1em 1em 0;
+        }
+    }
+}

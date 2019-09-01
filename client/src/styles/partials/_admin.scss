@@ -1,0 +1,36 @@
+.admin-section{
+
+    &__title{
+        font-size:3.5rem;
+        line-height:2rem;
+        color:#fff;
+    }
+
+    .admin-columns{
+
+        display:flex;
+        justify-content: space-between;
+        align-items:flex-start;
+
+        &__list{
+            width:58%;
+        }
+
+        &__form{
+            width:40%;
+
+            form{
+
+                .select-videos{
+                     display:flex;
+                     flex-wrap:wrap;
+                     justify-content:flex-start;
+                     align-items: flex-start;
+                }
+            }
+        }
+    }
+    
+
+
+}

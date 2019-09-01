@@ -56,6 +56,10 @@ header section a button {
   color: #fff;
 }
 
+.login {
+  padding: 23% 0 30.2%;
+}
+
 .login__title {
   margin: 0;
   font-size: 7rem;
@@ -91,10 +95,82 @@ header section a button {
   background: #841983;
 }
 
+.admin__clientList .clientList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin__clientList .clientList__wrapper {
+  padding: 1.5em;
+  background: #fff;
+  border-radius: 10px;
+  margin: 0 1em 1em 0;
+}
+
+.admin-section__title {
+  font-size: 3.5rem;
+  line-height: 2rem;
+  color: #fff;
+}
+
+.admin-section .admin-columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.admin-section .admin-columns__list {
+  width: 58%;
+}
+
+.admin-section .admin-columns__form {
+  width: 40%;
+}
+
+.admin-section .admin-columns__form form .select-videos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 footer {
   background: rgba(237, 192, 25, 0.8);
   width: 100%;
   color: #fff;
+}
+
+.video-options {
+  width: 200px;
+  margin-right: 1em;
+}
+
+.video-options__checkbox {
+  visibility: hidden;
+  width: auto;
+  margin-right: .5em;
 }
 
 html {
@@ -168,7 +244,6 @@ main {
   width: 100%;
   max-width: none;
   margin: 0 auto;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

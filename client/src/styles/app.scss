@@ -6,6 +6,7 @@
 @import "partials/clientList";
 @import "partials/admin";
 @import "partials/footer";
+@import "partials/videoOptions";
 
 
 
@@ -82,7 +83,7 @@ section{
 }
 main{
     @include container(100%, none, auto);
-    height: 100vh;
+    // height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;

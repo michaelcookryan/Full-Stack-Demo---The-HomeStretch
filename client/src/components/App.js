@@ -3,6 +3,7 @@ import Header from './Header'
 import ClientView from './ClientView/ClientView'
 import Admin from './AdminView/Admin'
 import Login from './Login'
+import Footer from './Footer'
 import "../styles/app.css"
 import axios from 'axios'
 import { Route, Switch, Redirect } from 'react-router-dom'
@@ -134,7 +135,7 @@ logOut = event => {
             
           </Switch>
         </main>
-      
+      <Footer/>
       </div>
     );
   }

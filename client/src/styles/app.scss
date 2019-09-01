@@ -1,5 +1,12 @@
 @import "partials/colors";
 @import "partials/fonts";
+@import "partials/header";
+@import "partials/login";
+@import "partials/client";
+@import "partials/clientList";
+@import "partials/admin";
+@import "partials/footer";
+
 
 
 html {
@@ -23,6 +30,12 @@ body{
     margin:0;
     color:$main-black;
     font-family: $regular;
+    height:100vh;
+    background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    // background-color:rgba(126,208,38,0.7);
+ 
 }
 h1{
   font-family: $sauna-bold;
@@ -66,19 +79,20 @@ section{
 }
 main{
     @include container(90%, 720px, auto);
+    height: 71vh;
     display: flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    align-items:flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
 }
 button{
     text-transform: uppercase;
-    padding:1.25em;
+    padding:1.1em 2em;
     background:$primary-cta-text-link;
     color:#fff;
-    border-radius:4px;
+    border-radius:50px;
     border:none;
-    // float:right;
     transition: all .2s ease-in-out;
     
     &:hover
@@ -127,7 +141,7 @@ input:focus, textarea:focus{
         font-size:.88rem;
         line-height:1.4rem;
     }
-    main,section{
-        @include container(90%, 1080px, auto); 
+  main, section{
+        @include container(100%, 1080px, auto); 
     }
 }

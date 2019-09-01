@@ -13,6 +13,93 @@
   src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
 }
 
+header {
+  height: 100px;
+  padding: 1em 0;
+  background: rgba(41, 194, 251, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header section a {
+  text-decoration: none;
+  color: #fff;
+}
+
+header section a .header__title {
+  font-family: "sauna-new";
+  font-size: 1.6em;
+}
+
+header section a button {
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.login__title {
+  margin: 0;
+  font-size: 7rem;
+  line-height: 6rem;
+  color: #fff;
+  text-shadow: 3px 3px 5px grey;
+}
+
+.login__subtitle {
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 1rem 0 4rem 0;
+}
+
+.login__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login__form input {
+  width: 300px;
+  margin: 0 0.8em 0 0;
+}
+
+.login__form button {
+  background: #841983;
+}
+
+footer {
+  background: rgba(237, 192, 25, 0.8);
+  margin-top: 15vh;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -28,6 +115,11 @@ body {
   margin: 0;
   color: #323232;
   font-family: "AvenirNextLTPro-Regular";
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(126, 208, 38, 0.7)), to(rgba(126, 208, 38, 0.7))), url("../assets/images/massage-room.jpg");
+  background: linear-gradient(rgba(126, 208, 38, 0.7), rgba(126, 208, 38, 0.7)), url("../assets/images/massage-room.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
@@ -80,25 +172,27 @@ main {
   width: 90%;
   max-width: 720px;
   margin: 0 auto;
+  height: 71vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 button {
   text-transform: uppercase;
-  padding: 1.25em;
+  padding: 1.1em 2em;
   background: #0095FF;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 50px;
   border: none;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
@@ -167,7 +261,7 @@ input:focus, textarea:focus {
     line-height: 1.4rem;
   }
   main, section {
-    width: 90%;
+    width: 100%;
     max-width: 1080px;
     margin: 0 auto;
   }

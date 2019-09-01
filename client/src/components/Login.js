@@ -3,12 +3,12 @@ import React from 'react'
 export default function Login({findAndRedirect}) {
 
     return (
-        <section>
-            <h3>For clients looking to improve their injuries in between appointments...</h3>
-            <h2>Welcome to</h2>
-            <h1>The HomeStretch</h1>
+        <section className="login">
+            <h1 className="login__title">The HomeStretch</h1>
+            <h3 className="login__subtitle">Instructional videos for clients to maintain their recovery progress in between appointments</h3>
             
-            <form onSubmit={findAndRedirect}>
+            
+            <form className="login__form" onSubmit={findAndRedirect}>
                 <input type="text" name="name" placeholder="name"/>
                 <input type="email" name="email" placeholder="email" required />
                 <button>Check In</button>

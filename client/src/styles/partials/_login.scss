@@ -1,0 +1,33 @@
+.login{
+    
+        &__title{
+            margin:0;
+            font-size: 7rem;
+            line-height: 6rem;
+            color:#fff;
+            text-shadow: 3px 3px 5px grey;
+        }
+        &__subtitle{
+            color:#fff;
+            font-size:1.3rem;
+            margin: 1rem 0 4rem 0;
+        }
+
+        &__form{
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+
+
+            input{
+                width:300px;
+                margin:0 0.8em 0 0;
+            }
+            button{
+                background: $orchid;
+            }
+        }
+}
+
+
+   

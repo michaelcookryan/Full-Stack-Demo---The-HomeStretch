@@ -1,9 +1,14 @@
 .admin-section{
     padding:2.2em 0 14em;
+   
     &__title{
         font-size:3.5rem;
         line-height:2rem;
         color:#fff;
+    }
+    &__subtitle{
+        color:$text-field-bg;
+        margin:.5em 0 1em;
     }
 
     .admin-columns{

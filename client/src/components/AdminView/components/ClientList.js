@@ -24,7 +24,7 @@ export default function ClientList({ clients, removeClient, showEditor, isActive
         })
     return (
         <div className="admin__clientList">
-            <h2>Client List</h2>
+            {/* <h2>Client List</h2> */}
             <div className="clientList">{allClients}</div>
         </div>
     )

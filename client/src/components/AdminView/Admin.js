@@ -127,7 +127,7 @@ removeClient = (event, clientId) => {
     return (
       <section className="admin-section">
         <h1 className="admin-section__title">Therapist's Dashboard</h1>
-
+        <h2 className="admin-section__subtitle">Client List</h2>
         <div className="admin-columns">
 
           <div className="admin-columns__list">

@@ -111,6 +111,85 @@ header section a button {
   background: #ff5992;
 }
 
+.clientList__wrapper {
+  padding: 1.5em;
+  background: #fff;
+  border-radius: 10px;
+  margin: 0 1em 1em 0;
+  min-width: 270px;
+  background: beige;
+}
+
+.clientList__wrapper .clientList__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.clientList__wrapper .clientList__item--name h5 {
+  font-size: 1.2em;
+  text-transform: capitalize;
+  color: white;
+  padding: 1em;
+  background: #4cdef5;
+  border-radius: 50px 0;
+  margin-top: 0;
+  text-align: center;
+}
+
+.clientList__wrapper .clientList__item .clientList__details--email, .clientList__wrapper .clientList__item .clientList__details--videos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.clientList__wrapper .clientList__item .clientList__details--email span, .clientList__wrapper .clientList__item .clientList__details--videos span {
+  color: grey;
+}
+
+.clientList__wrapper .clientList__item .clientList__details--email p, .clientList__wrapper .clientList__item .clientList__details--videos p {
+  margin: 0 0 0 .5em;
+}
+
+.clientList__wrapper .clientList__item--button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: .5em 0;
+}
+
+.clientList__wrapper .clientList__item--button button {
+  background: #fff;
+  font-size: .7em;
+  padding: 0 .4em;
+  border-radius: 10px;
+}
+
+.clientList__wrapper .clientList__item--button button h5 {
+  color: #0095FF;
+}
+
+.clientList__wrapper .clientList__item--button button:hover {
+  border-radius: 50px;
+  background: #ff5992;
+}
+
+.clientList__wrapper .clientList__item--button button:hover h5 {
+  color: #fff;
+}
+
 .admin__clientList .clientList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -125,15 +204,6 @@ header section a button {
           align-items: center;
 }
 
-.admin__clientList .clientList__wrapper {
-  padding: 1.5em;
-  background: #fff;
-  border-radius: 10px;
-  margin: 0 1em 1em 0;
-  -webkit-box-shadow: 2px 2px 4px #567c18;
-          box-shadow: 2px 2px 4px #567c18;
-}
-
 .admin-section {
   padding: 2.2em 0 14em;
 }
@@ -142,6 +212,11 @@ header section a button {
   font-size: 3.5rem;
   line-height: 2rem;
   color: #fff;
+}
+
+.admin-section__subtitle {
+  color: #FAFAFA;
+  margin: .5em 0 1em;
 }
 
 .admin-section .admin-columns {

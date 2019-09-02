@@ -1,7 +1,7 @@
 import React from 'react'
 import ClientItem from './ClientItem'
 
-export default function ClientList({ clients, removeClient, showEditor, isActive}) {
+export default function ClientList({ clients, removeClient, showEditor, isActive, updateClient}) {
     
     const allClients = clients.map(client => {
 
@@ -17,6 +17,7 @@ export default function ClientList({ clients, removeClient, showEditor, isActive
                     removeClient={removeClient}
                     showEditor={showEditor}
                     isActive={isActive}
+                    updateClient={updateClient}
                 />
             )
         }
@@ -24,7 +25,6 @@ export default function ClientList({ clients, removeClient, showEditor, isActive
         })
     return (
         <div className="admin__clientList">
-            {/* <h2>Client List</h2> */}
             <div className="clientList">{allClients}</div>
         </div>
     )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import EditItem from './EditItem';
+import EditItem from './EditItem'
 import axios from 'axios'
 
 const clientsUrl = "http://localhost:8090/clients";
@@ -11,7 +11,8 @@ export default class ClientItem extends Component {
     state = {
         isActive: false,
         currentDataForEdit: {},
-        allVideos: []
+        allVideos: [],
+        assignedVideos:this.props.videos
     }
 
     showEditor = (event, clientId) => {
@@ -19,23 +20,25 @@ export default class ClientItem extends Component {
 
         this.setState({
 
-            isActive: !this.state.isActive
+            isActive: !this.state.isActive,
+            assignedVideos: this.state.assignedVideos
 
         })
 
     }
 
     clientEditor = (retrievedData) => {
-        
+      
         if (this.state.isActive && retrievedData) {
 
             return <EditItem
                 clientId={retrievedData.clientId}
                 name={retrievedData.name}
                 email={retrievedData.email}
-                videos={retrievedData.videos}
+                videos={this.state.assignedVideos}
                 showEditor={this.showEditor}
                 allVideos={this.state.allVideos}
+                updateClient={this.props.updateClient}
                 
             />
         }
@@ -66,27 +69,32 @@ export default class ClientItem extends Component {
  
     }
     render() {
-        return (
+    
+        return (<div>
             <div className="clientList__wrapper">
+
                 <div className="clientList__item" onClick={(event) => this.showEditor(event, this.props.clientId)}>
                     <div className="clientList__item--name"><h5>{this.props.name}</h5></div>
-                    <div className="clientList__details">
-                        {/* <div className="clientList__details--name"><h5>{this.props.name}</h5></div> */}
-                        
-                        <div className="clientList__details--email"><span>email:</span><p> {this.props.email}</p></div>
-                        <div className="clientList__details--videos"><span>videos:</span><p>  {this.props.videos.length}</p></div>
-                    </div>
-                    
-                <div className="clientList__item--button">
+                </div>
+                
+                <div className="clientList__details">
 
-                        <button className="item__delete" onClick={(event) => this.props.removeClient(event, this.props.clientId, this.props.name)}><h5>Remove</h5></button>
+                    <div className="clientList__details--email"><span>email:</span><p> {this.props.email}</p></div>
+                    <div className="clientList__details--videos"><span>videos:</span><p>  {this.props.videos.length}</p></div>
+                </div>
+
+                <div className="clientList__item--button">
+                    
+                    <button className="item__delete" onClick={(event) => this.props.removeClient(event, this.props.clientId, this.props.name)}><h5>Remove</h5></button>
 
                 </div>
 
+               
+
             </div>
-        
-            <div className="client__editor">{this.clientEditor(this.state.currentDataForEdit)}</div>
-        </div>
+            <div className="client__editor">
+                {this.clientEditor(this.state.currentDataForEdit)}
+            </div></div>
         )
     }
 }

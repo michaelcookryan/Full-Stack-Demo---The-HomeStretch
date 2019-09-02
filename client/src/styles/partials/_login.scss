@@ -5,8 +5,16 @@
     flex-direction: column;
     align-content: center;
     justify-content: space-around;
+    background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    background-repeat: no-repeat;
+    background-size: 120vw;
+    width:100%;
+    max-width: none;
 
     .login-container{
+        width: 90%;
+        max-width: 1080px;
+        margin: 0 auto;
 
          &__title{
             margin:0;

@@ -76,7 +76,7 @@ logOut = event => {
     return (
       <div className="App">
 
-        {/* <Header logOut={this.logOut}/> */}
+       
 
         <main>
           <Header logOut={this.logOut} />
@@ -122,6 +122,8 @@ logOut = event => {
 
             <Route path="/login" findAndRedirect={this.findAndRedirect} component={Login}/>
 
+           
+            
             <Route path="/clients/:clientId/:videoId" render={(props) => {
     
               return (<ClientView clientId={this.state.id} {...props}/>)
@@ -134,10 +136,11 @@ logOut = event => {
 
             }} />
             
+            
           </Switch>
           <Footer />
         </main>
-      {/* <Footer/> */}
+      
       </div>
     );
   }

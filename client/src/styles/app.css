@@ -70,6 +70,18 @@ header section a button {
       align-content: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(126, 208, 38, 0.7)), to(rgba(126, 208, 38, 0.7))), url("../assets/images/massage-room.jpg");
+  background: linear-gradient(rgba(126, 208, 38, 0.7), rgba(126, 208, 38, 0.7)), url("../assets/images/massage-room.jpg");
+  background-repeat: no-repeat;
+  background-size: 120vw;
+  width: 100%;
+  max-width: none;
+}
+
+.login .login-container {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .login .login-container__title {
@@ -116,7 +128,7 @@ header section a button {
   background: #fff;
   border-radius: 10px;
   margin: 0 1em 1em 0;
-  min-width: 270px;
+  width: auto;
   background: beige;
 }
 
@@ -124,13 +136,13 @@ header section a button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-  border-bottom: 1px solid #E1E1E1;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 1em;
 }
 
 .clientList__wrapper .clientList__item--name h5 {
@@ -142,9 +154,60 @@ header section a button {
   border-radius: 50px 0;
   margin-top: 0;
   text-align: center;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
-.clientList__wrapper .clientList__item .clientList__details--email, .clientList__wrapper .clientList__item .clientList__details--videos {
+.clientList__wrapper .clientList__item--name h5:hover, .clientList__wrapper .clientList__item--name h5:focus, .clientList__wrapper .clientList__item--name h5:active, .clientList__wrapper .clientList__item--name h5:visited {
+  background: #841983;
+  border-radius: 0 50px;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.clientList__wrapper .clientList__item--button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1em 0 0;
+}
+
+.clientList__wrapper .clientList__item--button button {
+  background: #fff;
+  font-size: .7em;
+  padding: 0 .4em;
+  border-radius: 10px;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.clientList__wrapper .clientList__item--button button h5 {
+  font-family: "AvenirNextLTPro-Regular";
+  color: #0095FF;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.clientList__wrapper .clientList__item--button button:hover {
+  border-radius: 50px;
+  background: #ff5992;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.clientList__wrapper .clientList__item--button button:hover h5 {
+  color: #fff;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.clientList__wrapper .clientList__details--email, .clientList__wrapper .clientList__details--videos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -156,38 +219,34 @@ header section a button {
           align-items: center;
 }
 
-.clientList__wrapper .clientList__item .clientList__details--email span, .clientList__wrapper .clientList__item .clientList__details--videos span {
+.clientList__wrapper .clientList__details--email span, .clientList__wrapper .clientList__details--videos span {
   color: grey;
 }
 
-.clientList__wrapper .clientList__item .clientList__details--email p, .clientList__wrapper .clientList__item .clientList__details--videos p {
+.clientList__wrapper .clientList__details--email p, .clientList__wrapper .clientList__details--videos p {
   margin: 0 0 0 .5em;
 }
 
-.clientList__wrapper .clientList__item--button {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  margin: .5em 0;
+.client__editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(41, 194, 251, 0.7);
+  padding: 2em;
 }
 
-.clientList__wrapper .clientList__item--button button {
-  background: #fff;
-  font-size: .7em;
-  padding: 0 .4em;
-  border-radius: 10px;
-}
-
-.clientList__wrapper .clientList__item--button button h5 {
-  color: #0095FF;
-}
-
-.clientList__wrapper .clientList__item--button button:hover {
-  border-radius: 50px;
-  background: #ff5992;
-}
-
-.clientList__wrapper .clientList__item--button button:hover h5 {
-  color: #fff;
+.client__editor div form .select-videos {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .admin__clientList .clientList {
@@ -205,7 +264,8 @@ header section a button {
 }
 
 .admin-section {
-  padding: 2.2em 0 14em;
+  padding: 2.2em 0 4em;
+  max-width: 1200px;
 }
 
 .admin-section__title {
@@ -237,18 +297,18 @@ header section a button {
 }
 
 .admin-section .admin-columns__list {
-  width: 54%;
+  width: 90%;
 }
 
 .admin-section .admin-columns__form {
-  width: 43%;
+  width: 460px;
   padding: 1.5em 1em;
   background: rgba(86, 124, 24, 0.3);
   border-radius: 15px;
 }
 
 .admin-section .admin-columns__form form .admin-form-input {
-  margin-bottom: 1em;
+  margin: 0 1em .5em;
   width: 90%;
   padding: .7em;
 }
@@ -385,8 +445,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(126, 208, 38, 0.7)), to(rgba(126, 208, 38, 0.7))), url("../assets/images/massage-room.jpg");
-  background: linear-gradient(rgba(126, 208, 38, 0.7), rgba(126, 208, 38, 0.7)), url("../assets/images/massage-room.jpg");
+  background: radial-gradient(rgba(126, 208, 38, 0.7), #7ec81e);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -398,15 +457,15 @@ button {
   color: #fff;
   border-radius: 50px;
   border: none;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
   font-size: 1rem;
 }
 
 button:hover {
   background: #ff5992;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 button:active, button:visited, button:focus {

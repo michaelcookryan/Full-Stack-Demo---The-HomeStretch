@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ClientList from "./components/ClientList";
-import VideoOptions from "./components/VideoOptions"
+import VideoOptions from "./components/VideoOptions";
 import axios from "axios";
 
 const clientsUrl = "http://localhost:8090/clients";
@@ -18,10 +18,10 @@ export default class Admin extends Component {
     defaultEmpty:['video']
   };
  
-  settingStateForList= () => {
+  settingStateForList = () => {
         axios.get(clientsUrl)
           .then(response => {
-           
+          
             this.setState({
 
               clients: response.data.data,
@@ -112,31 +112,66 @@ addClient = event => {
 };
 
   removeClient = (event, clientId, name) => {
+
     let confirmation = window.confirm(`Confirm you are removing ${name} from your client list.`)
-  if (confirmation) {
+
+    if (confirmation) {
+    
     axios.delete(`${clientsUrl}/${clientId}`)
       .then(response => {
 
         this.settingStateForList()
 
       }).catch(err => console.log(err))
-  } else { 
-    return
-  }
-    
+  }    
 
 }
 
+  updateClient = (event, id) => {
+    event.preventDefault()
+    
+    const selectedVideos = event.target.assignedVideos;
+    const assigned = [];
+
+    for (let checkbox of selectedVideos) {
+
+      if (checkbox.checked) {
+
+        assigned.push(checkbox.value);
+
+      }
+    }
+
+    const clientToUpdate = {
+      clientId: id,
+      videos: assigned
+    }
+    
+    axios.put(`${clientsUrl}/${clientToUpdate}`, clientToUpdate)
+      .then(() => {
+
+        this.settingStateForList()
+        
+
+      }).catch(err => console.log(err));
+
+
+  }; 
+  
+  
   render() {
 
     return (
+     
+      
       <section className="admin-section">
+         
         <h1 className="admin-section__title">Therapist's Dashboard</h1>
         <h2 className="admin-section__subtitle">Client List</h2>
         <div className="admin-columns">
 
           <div className="admin-columns__list">
-            <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive}/>
+            <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive} updateClient={this.updateClient}/>
           </div>
             
           <div className="admin-columns__form">
@@ -157,8 +192,9 @@ addClient = event => {
 
           </div>
         </div>
+      
       </section>
-
+      
      
   
     );

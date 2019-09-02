@@ -88,7 +88,8 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    // background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    background:radial-gradient(rgba(126,208,38,0.7),rgba(126, 200, 30, 1));
     background-repeat: no-repeat;
     background-size:cover;
     
@@ -100,13 +101,13 @@ button{
     color:#fff;
     border-radius:50px;
     border:none;
-    transition: all .2s ease-in-out;
+    transition: all .4s ease-in-out;
     font-size:1rem;
     
     &:hover
    {
         background:$blush;
-        transition: all .2s ease-in-out;
+        transition: all .4s ease-in-out;
     }
     &:active,
     &:visited,

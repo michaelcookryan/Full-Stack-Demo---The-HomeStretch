@@ -11,10 +11,7 @@ export default function VideoOptions({allVideos, assigned}) {
         return (
 
             <div className="video-options" key={video._id}>
-                {/* <label>{video.title}</label> */}
-                {/* <label> */}
                 <input className="video-options__checkbox" type="checkbox" id={video.videoId} name="assignedVideos" value={video.videoId} defaultChecked /><label htmlFor={video.videoId}>{video.title}</label>
-                {/* </label> */}
             </div>
 
         );
@@ -23,10 +20,7 @@ export default function VideoOptions({allVideos, assigned}) {
             return (
 
                 <div className="video-options" key={video._id}>
-                    {/* <label>{video.title}</label> */}
-                  
-                    <input className="video-options__checkbox" type="checkbox" id={video.videoId} name="assignedVideos" value={video.videoId} /><label htmlFor={video.videoId}>{video.title}</label>
-                   
+                    <input className="video-options__checkbox" type="checkbox" id={video.videoId} name="assignedVideos" value={video.videoId} /><label htmlFor={video.videoId}>{video.title}</label>                  
                 </div>
 
             );

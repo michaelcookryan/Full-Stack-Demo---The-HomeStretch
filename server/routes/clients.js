@@ -75,10 +75,11 @@ router.post("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
 
-    User.findOneAndUpdate({ clientId: req.body.clientId }, { videos: req.body.videos })
-        .then(() => {
+    User.updateOne({ clientId: req.body.clientId }, { videos: req.body.videos })
+        .then((response) => {
         
-            console.log("Updated client: ", req.body.clientId)
+            console.log("Updated client: ", response)
+            res.json(response)
 
     }).catch(err => console.error(`Failed to update document: ${err}`))
 

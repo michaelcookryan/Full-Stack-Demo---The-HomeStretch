@@ -2,16 +2,16 @@
     padding:1.5em;
     background: #fff;
     border-radius: 10px;
-    margin:0 1em 1em 0;
-    // box-shadow:2px 2px 4px $pea-shadow;
-    min-width:270px;
+    margin:0 1em 1em 0;;
+    width:auto;
     background: beige;
+     
 
         .clientList__item{
             display:flex;
-            flex-direction: column;
-            align-content: flex-start;
-            border-bottom:1px solid $divider;
+            justify-content: flex-start;
+            align-items: center;
+            padding-bottom:1em;
 
             &--name{
 
@@ -24,10 +24,52 @@
                         border-radius: 50px 0;
                         margin-top: 0;
                         text-align:center;
+                        transition: all .4s ease-in-out;
+
+                        &:hover,
+                        &:focus,
+                        &:active,
+                        &:visited{
+                            background: $orchid;
+                            border-radius: 0 50px;
+                            transition: all .4s ease-in-out;
+                        }
                     }
                 }
 
-            .clientList__details{
+            &--button{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin:1em 0 0;
+
+                button{
+                    background:#fff;
+                    font-size:.7em;
+                    padding:0 .4em;
+                    border-radius: 10px;
+                    transition:all .5s ease-in-out;
+
+                    h5{
+                        font-family: $regular;
+                        color:#0095FF;
+                        transition:all .5s ease-in-out;
+                    }
+
+                    &:hover{
+                        border-radius: 50px;
+                        background:$blush;
+                        transition:all .5s ease-in-out;
+                    }
+                    &:hover h5{
+                        color:#fff;
+                        transition:all .5s ease-in-out;
+                    }
+                }
+            }
+            
+}
+  .clientList__details{
 
                &--email,
                &--videos{
@@ -44,47 +86,25 @@
                    }
                }
             }
-            &--button{
-                align-self: flex-end;
-                margin:.5em 0;
+}
+.client__editor{
+                position: absolute;
+                top: 0;
+                left: 0;
+                background:rgba(41, 194, 251, 0.7);
+                padding:2em;
 
-                button{
-                    background:#fff;
-                    font-size:.7em;
-                    padding:0 .4em;
-                    border-radius: 10px;
+                div{
 
-                    h5{
-                        color:#0095FF;
-                    }
+                    form{
 
-                    &:hover{
-                        border-radius: 50px;
-                        background:$blush;
-                    }
-                    &:hover h5{
-                        color:#fff;
+                        .select-videos{
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            flex-wrap: wrap;
+                        }
                     }
                 }
             }
-}
-
-
-
-
-// .client__editor{
-    // position: fixed;
-    // background: grey;
-    // display: flex;
-    // justify-content: space-evenly;
-    // align-items: center;
-    // width: 100vw;
-    // height: 100vh;
-    // top: 20%;
-    // left: 10%
-    
-    
-    
-    
-    
-}

@@ -3,64 +3,73 @@ import VideoOptions from './VideoOptions'
 import axios from 'axios'
 
 const clientsUrl = "http://localhost:8090/clients";
+const videosUrl = "http://localhost:8090/videos";
 
 export default class EditItem extends Component {
-
+   
 
     state = {
-        fromEdit: true
+        
+        allVideos: [],
+        currentDataForEdit: {},
+        assignedVideos: this.props.videos
     }
 
-    updateClient = (event) => {
-       
-        const selectedVideos = event.target.assignedVideos;
-        const id = this.props.clientId
-        const assigned = [];
+    componentDidMount() { 
 
-        for (let checkbox of selectedVideos) {
+        this.refeshView()
 
-            if (checkbox.checked) {
+    }
 
-                assigned.push(checkbox.value);
+    refeshView() {
+      
+        axios.get(videosUrl)
+            .then(response => {
 
-            }
-        }
+                this.setState({
 
-        const clientToUpdate = {
-            clientId: id,
-            videos: assigned
-        }
-        axios.put(`${clientsUrl}/${clientToUpdate}`, clientToUpdate)
-            .then((response) => {
+                    allVideos: response.data.data
 
-                console.log("update sent ",response.data.data)
+                });
 
             }).catch(err => console.log(err));
 
-        event.target.reset();
-    };
+        axios.get(`${clientsUrl}/${this.props.clientId}`).then(response => {
+
+            this.setState({
+
+                currentDataForEdit: response.data.response,
+                assignedVideos: response.data.response.videos
+
+            })
+
+        }).catch(err => console.log(err))
+
+    }
 
     render() {
        
-
         return (
-           
-            <div>
+         
+            <section>
                 <h3>Client Name: {this.props.name}</h3>
                 <h3>Contact Info: {this.props.email}</h3>
 
-                <form onSubmit={this.updateClient}>
+                <form onSubmit={(event)=> this.props.updateClient(event, this.props.clientId)}>
                     <div className="select-videos">
                        
-                        <VideoOptions allVideos={this.props.allVideos} assigned={this.props.videos}/>
+                        <VideoOptions allVideos={this.state.allVideos} assigned={this.state.assignedVideos}/>
 
                     </div>
 
-                    <button onClick={(event) => this.props.showEditor(event, this.props.clientId)}>Close</button>
+                    <button onClick={(event) => {
+                        this.props.showEditor(event, this.props.clientId);
+                        this.refeshView();
+                    }}>Close</button>
 
                     <button>update</button>
                 </form>
-            </div> 
+            </section> 
         )
 
 }

@@ -42,7 +42,6 @@ export default class ClientItem extends Component {
     }
 
 
-
     componentDidMount() {
         axios.get(videosUrl)
             .then(response => {
@@ -80,7 +79,7 @@ export default class ClientItem extends Component {
                     
                 <div className="clientList__item--button">
 
-                        <button className="item__delete" onClick={(event) => this.props.removeClient(event, this.props.clientId)}><h5>Remove</h5></button>
+                        <button className="item__delete" onClick={(event) => this.props.removeClient(event, this.props.clientId, this.props.name)}><h5>Remove</h5></button>
 
                 </div>
 

@@ -111,14 +111,19 @@ addClient = event => {
       event.target.reset();
 };
 
-removeClient = (event, clientId) => {
-    
+  removeClient = (event, clientId, name) => {
+    let confirmation = window.confirm(`Confirm you are removing ${name} from your client list.`)
+  if (confirmation) {
     axios.delete(`${clientsUrl}/${clientId}`)
       .then(response => {
 
         this.settingStateForList()
-        
+
       }).catch(err => console.log(err))
+  } else { 
+    return
+  }
+    
 
 }
 

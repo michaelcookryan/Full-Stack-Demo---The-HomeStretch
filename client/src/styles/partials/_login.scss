@@ -4,9 +4,11 @@
     flex-direction: column;
     align-content: center;
     justify-content: space-around;
-    background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    // background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
+    background:linear-gradient(rgba(126,208,38,0.7),rgba(158, 193,26, 0.7)) ,url("../assets/images/massage-room.jpg");
     background-repeat: no-repeat;
-    background-size: 120vw;
+    background-position: top center;
+    background-size: cover;
     width:100%;
     max-width: none;
 

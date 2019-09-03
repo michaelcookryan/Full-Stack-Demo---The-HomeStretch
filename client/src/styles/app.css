@@ -75,10 +75,11 @@ header section a button:hover {
       align-content: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(126, 208, 38, 0.7)), to(rgba(126, 208, 38, 0.7))), url("../assets/images/massage-room.jpg");
-  background: linear-gradient(rgba(126, 208, 38, 0.7), rgba(126, 208, 38, 0.7)), url("../assets/images/massage-room.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(126, 208, 38, 0.7)), to(rgba(158, 193, 26, 0.7))), url("../assets/images/massage-room.jpg");
+  background: linear-gradient(rgba(126, 208, 38, 0.7), rgba(158, 193, 26, 0.7)), url("../assets/images/massage-room.jpg");
   background-repeat: no-repeat;
-  background-size: 120vw;
+  background-position: top center;
+  background-size: cover;
   width: 100%;
   max-width: none;
 }
@@ -586,7 +587,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: radial-gradient(rgba(126, 208, 38, 0.7), #7ec81e);
+  background: radial-gradient(rgba(126, 208, 38, 0.7), #9ec11a);
   background-repeat: no-repeat;
   background-size: cover;
 }

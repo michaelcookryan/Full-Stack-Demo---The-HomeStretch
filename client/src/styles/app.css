@@ -54,6 +54,8 @@ header section a button {
   background: none;
   border: 2px solid #fff;
   color: #fff;
+  padding: .5em 1.5em;
+  font-size: .8rem;
 }
 
 header section a button:hover {
@@ -61,8 +63,7 @@ header section a button:hover {
 }
 
 .login {
-  padding: 23% 0 30.2%;
-  height: 90vh;
+  height: 91vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -340,7 +341,7 @@ header section a button:hover {
 }
 
 .admin-section {
-  padding: 2.2em 0 4em;
+  padding: 0 0 3em;
   max-width: 1200px;
 }
 
@@ -437,6 +438,74 @@ footer {
   color: #fff;
 }
 
+.client-section {
+  padding: 0 0 2em;
+  max-width: 1200px;
+}
+
+.client-section__title {
+  font-size: 3.5rem;
+  line-height: 2rem;
+  color: #fff;
+}
+
+.video {
+  text-decoration: none;
+}
+
+.video .video-link__details--title {
+  font-size: 1.2em;
+  text-transform: capitalize;
+  color: white;
+  padding: 1em;
+  background: #4cdef5;
+  border-radius: 50px 0;
+  margin-top: 0;
+  text-align: center;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.video .video-link__details--title:hover, .video .video-link__details--title:focus, .video .video-link__details--title:active, .video .video-link__details--title:visited {
+  background: #841983;
+  border-radius: 0 50px;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.video.isOpen .video-link .video-link__details .video-link__details--title {
+  background: #841983;
+  border-radius: 0 50px;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.next-videos {
+  padding: 1em;
+}
+
+.next-videos__title {
+  color: #FAFAFA;
+  margin-bottom: 1em;
+}
+
+.next-videos__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 2em 1em;
+  background: rgba(86, 124, 24, 0.3);
+  border-radius: 15px;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -452,10 +521,6 @@ body {
   margin: 0;
   color: #323232;
   font-family: "AvenirNextLTPro-Regular";
-}
-
-.App {
-  height: 100vh;
 }
 
 h1 {
@@ -500,7 +565,7 @@ h5 {
 
 section {
   width: 90%;
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 

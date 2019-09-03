@@ -1,20 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default function VideoItem({videoId,title, clientId, unique}) {
+export default function VideoItem({videoId,title, clientId, unique, handleClick}) {
 
         return (
-            <Link to={`/clients/${clientId}/${videoId}`}>
+            <Link id={videoId} className="video" to={`/clients/${clientId}/${videoId}`} onClick={()=>{handleClick(videoId)}}>
             
-                <li key={unique} className="video-thumb">
+                <div className="video-link" key={unique} >
                                     
-                    <div className="video-thumb__copy">
-                        <h4 className="video-thumb__copy--title">
+                    <div className="video-link__details">
+                        <h5 className="video-link__details--title">
                             {title}
-                        </h4>                       
+                        </h5>                       
                        
                     </div>                 
-                </li> 
+                </div> 
             </Link > 
         )
     }

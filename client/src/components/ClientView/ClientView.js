@@ -17,8 +17,11 @@ export default class ClientView extends Component {
 
     componentDidMount() {
 
-        axios.get(clientsUrl + "/" + this.props.clientId).then(response => {
-               
+        const storedClientId = JSON.parse(localStorage.defaultInfo)
+
+        axios.get(clientsUrl + "/" + storedClientId).then(response => {
+           
+           
                 this.setState({
 
                     clientId: response.data.response.clientId,
@@ -29,7 +32,7 @@ export default class ClientView extends Component {
                 }, () => { 
                                                
                         axios.get(`${clientsUrl}/:id/videos`)
-                        
+                      
                             .then(response => { 
                                 
                                 const allVideos = response.data.data
@@ -71,18 +74,22 @@ componentDidUpdate(prevProps) {
             current: newCurrent
             
         })       
-
+        
     }
 }
+
+    
+
+
 
     render() {
         
         return (
-            <section>
-                <h1>Videos for {this.state.name}</h1> 
+            <section className="client-section">
+                <h1 className="client-section__title">Hi {this.state.name}! Follow along with these videos:</h1> 
                
                 <VideoPlayer current={this.state.current.url}/>
-                <VideoList videos={this.state.videos} clientId={this.state.clientId}/>
+                <VideoList videos={this.state.videos} clientId={this.state.clientId} />
 
             </section>
         )

@@ -1,0 +1,38 @@
+.video{
+    text-decoration: none;
+
+    .video-link{
+
+            &__details{
+
+                &--title{   
+                    font-size:1.2em;
+                    text-transform: capitalize;
+                    color: white;
+                    padding: 1em;
+                    background: #4cdef5;
+                    border-radius: 50px 0;
+                    margin-top: 0;
+                    text-align:center;
+                    transition: all .4s ease-in-out;
+
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &:visited{
+                        background: $orchid;
+                        border-radius: 0 50px;
+                        transition: all .4s ease-in-out;
+                    }
+                        
+                }
+
+                
+            }
+    }
+}
+.video.isOpen .video-link .video-link__details .video-link__details--title{
+                    background: $orchid;
+                    border-radius: 0 50px;
+                    transition: all .4s ease-in-out;
+                }

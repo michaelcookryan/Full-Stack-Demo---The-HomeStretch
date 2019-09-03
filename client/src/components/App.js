@@ -43,6 +43,8 @@ findAndRedirect = event => {
             } else { 
               redirect = true
             }
+      
+      localStorage.defaultInfo = JSON.stringify(currentUser.clientId)
 
       this.setState({
               

@@ -52,22 +52,23 @@ export default class EditItem extends Component {
         return (
          
             <section>
-                <h3>Client Name: {this.props.name}</h3>
-                <h3>Contact Info: {this.props.email}</h3>
-
-                <form onSubmit={(event)=> this.props.updateClient(event, this.props.clientId)}>
+                <form className="edit__form" onSubmit={(event)=> this.props.updateClient(event, this.props.clientId)}>
                     <div className="select-videos">
                        
                         <VideoOptions allVideos={this.state.allVideos} assigned={this.state.assignedVideos}/>
 
                     </div>
 
-                    <button onClick={(event) => {
-                        this.props.showEditor(event, this.props.clientId);
-                        this.refeshView();
-                    }}>Close</button>
+                    <div className="edit__form--buttons">
+                        <button className="close" onClick={(event) => {
+                            this.props.showEditor(event, this.props.clientId);
+                            this.refeshView();
+                            this.props.handleClick(this.props.clientId);
+                        }}>Close</button>
 
-                    <button>update</button>
+                        <button className="update">Update</button>
+                    </div>
+                    
                 </form>
             </section> 
         )

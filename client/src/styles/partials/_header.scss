@@ -23,6 +23,10 @@ header{
                 background:none;
                 border:2px solid #fff;
                 color:#fff;
+
+                &:hover{
+                    border-color:$blush;
+                }
             }
         }
     }

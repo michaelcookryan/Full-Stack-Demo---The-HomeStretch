@@ -1,17 +1,21 @@
-.clientList__wrapper{
+.clientItem{
     padding:1.5em;
-    background: #fff;
     border-radius: 10px;
     margin:0 1em 1em 0;;
     width:auto;
     background: beige;
      
 
-        .clientList__item{
+        &__module{
+            display:flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom:1em;
+
+            .clientItem__details{
             display:flex;
             justify-content: flex-start;
             align-items: center;
-            padding-bottom:1em;
 
             &--name{
 
@@ -36,12 +40,33 @@
                         }
                     }
                 }
+            
+               &--contact-videos{
+                    margin-left:1em;
 
+                   .email,
+                   .videos{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items:center;
+
+                            span{
+                                    color:grey;
+                                }
+                            p{
+                                margin:0 0 0 .5em;
+
+                            }
+                   }
+                   
+                
+               }
+            }
             &--button{
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                margin:1em 0 0;
+              
 
                 button{
                     background:#fff;
@@ -67,44 +92,76 @@
                     }
                 }
             }
-            
-}
-  .clientList__details{
+    }
 
-               &--email,
-               &--videos{
-                   display: flex;
-                   justify-content: flex-start;
-                   align-items:center;
-                   
-                    span{
-                           color:grey;
-                       }
-                   p{
-                       margin:0 0 0 .5em;
 
-                   }
-               }
-            }
-}
-.client__editor{
-                position: absolute;
-                top: 0;
-                left: 0;
-                background:rgba(41, 194, 251, 0.7);
-                padding:2em;
+    .client__editor{
+                    padding:2em;
+                    height:0px;
+                    margin-top:-100px;
+                    transition: all 1s ease-in-out;
+                            
 
-                div{
+                        .edit__form{
+                            display:flex;
+                            flex-direction:column;
 
-                    form{
 
-                        .select-videos{
-                            width: 100%;
-                            display: flex;
-                            justify-content: space-around;
-                            align-items: center;
-                            flex-wrap: wrap;
+                            .select-videos{
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                flex-wrap: wrap;
+                            }
+                            &--buttons{
+                                align-self: flex-end;
+
+                                .close{
+                                    background:none;
+                                    border:2px solid $primary-cta-text-link;
+                                    color:$primary-cta-text-link;
+                                    padding:.5em 1em;
+                                    font-size:.7rem;
+
+                                    &:hover{
+                                        background:#fff;
+                                    }
+                                }
+
+                                .update{
+                                    border:2px solid $primary-cta-text-link;
+                                    margin-left:1em;
+                                    padding:.5em 1em;
+                                    font-size:.7rem;
+
+                                    &:hover{
+                                         border-color:$blush;
+                                    }
+                                }
+                            }
                         }
-                    }
-                }
-            }
+                
+    }
+    .client__editor.isOpen{
+        height:auto;
+        margin-top:0;
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 1s;
+        
+
+    }
+    
+}
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+

@@ -56,6 +56,10 @@ header section a button {
   color: #fff;
 }
 
+header section a button:hover {
+  border-color: #ff5992;
+}
+
 .login {
   padding: 23% 0 30.2%;
   height: 90vh;
@@ -123,16 +127,28 @@ header section a button {
   background: #ff5992;
 }
 
-.clientList__wrapper {
+.clientItem {
   padding: 1.5em;
-  background: #fff;
   border-radius: 10px;
   margin: 0 1em 1em 0;
   width: auto;
   background: beige;
 }
 
-.clientList__wrapper .clientList__item {
+.clientItem__module {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-bottom: 1em;
+}
+
+.clientItem__module .clientItem__details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,10 +158,9 @@ header section a button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 1em;
 }
 
-.clientList__wrapper .clientList__item--name h5 {
+.clientItem__module .clientItem__details--name h5 {
   font-size: 1.2em;
   text-transform: capitalize;
   color: white;
@@ -158,14 +173,41 @@ header section a button {
   transition: all .4s ease-in-out;
 }
 
-.clientList__wrapper .clientList__item--name h5:hover, .clientList__wrapper .clientList__item--name h5:focus, .clientList__wrapper .clientList__item--name h5:active, .clientList__wrapper .clientList__item--name h5:visited {
+.clientItem__module .clientItem__details--name h5:hover, .clientItem__module .clientItem__details--name h5:focus, .clientItem__module .clientItem__details--name h5:active, .clientItem__module .clientItem__details--name h5:visited {
   background: #841983;
   border-radius: 0 50px;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
 }
 
-.clientList__wrapper .clientList__item--button {
+.clientItem__module .clientItem__details--contact-videos {
+  margin-left: 1em;
+}
+
+.clientItem__module .clientItem__details--contact-videos .email,
+.clientItem__module .clientItem__details--contact-videos .videos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.clientItem__module .clientItem__details--contact-videos .email span,
+.clientItem__module .clientItem__details--contact-videos .videos span {
+  color: grey;
+}
+
+.clientItem__module .clientItem__details--contact-videos .email p,
+.clientItem__module .clientItem__details--contact-videos .videos p {
+  margin: 0 0 0 .5em;
+}
+
+.clientItem__module--button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -175,10 +217,9 @@ header section a button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 1em 0 0;
 }
 
-.clientList__wrapper .clientList__item--button button {
+.clientItem__module--button button {
   background: #fff;
   font-size: .7em;
   padding: 0 .4em;
@@ -187,80 +228,115 @@ header section a button {
   transition: all .5s ease-in-out;
 }
 
-.clientList__wrapper .clientList__item--button button h5 {
+.clientItem__module--button button h5 {
   font-family: "AvenirNextLTPro-Regular";
   color: #0095FF;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
 }
 
-.clientList__wrapper .clientList__item--button button:hover {
+.clientItem__module--button button:hover {
   border-radius: 50px;
   background: #ff5992;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
 }
 
-.clientList__wrapper .clientList__item--button button:hover h5 {
+.clientItem__module--button button:hover h5 {
   color: #fff;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
 }
 
-.clientList__wrapper .clientList__details--email, .clientList__wrapper .clientList__details--videos {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.clientList__wrapper .clientList__details--email span, .clientList__wrapper .clientList__details--videos span {
-  color: grey;
-}
-
-.clientList__wrapper .clientList__details--email p, .clientList__wrapper .clientList__details--videos p {
-  margin: 0 0 0 .5em;
-}
-
-.client__editor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(41, 194, 251, 0.7);
+.clientItem .client__editor {
   padding: 2em;
+  height: 0px;
+  margin-top: -100px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
-.client__editor div form .select-videos {
-  width: 100%;
+.clientItem .client__editor .edit__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.admin__clientList .clientList {
+.clientItem .client__editor .edit__form .select-videos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.clientItem .client__editor .edit__form--buttons {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.clientItem .client__editor .edit__form--buttons .close {
+  background: none;
+  border: 2px solid #0095FF;
+  color: #0095FF;
+  padding: .5em 1em;
+  font-size: .7rem;
+}
+
+.clientItem .client__editor .edit__form--buttons .close:hover {
+  background: #fff;
+}
+
+.clientItem .client__editor .edit__form--buttons .update {
+  border: 2px solid #0095FF;
+  margin-left: 1em;
+  padding: .5em 1em;
+  font-size: .7rem;
+}
+
+.clientItem .client__editor .edit__form--buttons .update:hover {
+  border-color: #ff5992;
+}
+
+.clientItem .client__editor.isOpen {
+  height: auto;
+  margin-top: 0;
+  -webkit-animation-name: fadeInOpacity;
+          animation-name: fadeInOpacity;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+@-webkit-keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .admin-section {

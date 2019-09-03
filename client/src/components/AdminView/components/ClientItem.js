@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import EditItem from './EditItem'
 import axios from 'axios'
 
+
 const clientsUrl = "http://localhost:8090/clients";
 const videosUrl = "http://localhost:8090/videos";
 
@@ -39,11 +40,16 @@ export default class ClientItem extends Component {
                 showEditor={this.showEditor}
                 allVideos={this.state.allVideos}
                 updateClient={this.props.updateClient}
+                handleClick={this.handleClick}
                 
             />
         }
     }
 
+    handleClick = (id) => { 
+        const editor = document.getElementById(id);
+        editor.classList.toggle('isOpen')
+    }
 
     componentDidMount() {
         axios.get(videosUrl)
@@ -70,31 +76,45 @@ export default class ClientItem extends Component {
     }
     render() {
     
-        return (<div>
-            <div className="clientList__wrapper">
+        return (
+            <div className="clientItem">
 
-                <div className="clientList__item" onClick={(event) => this.showEditor(event, this.props.clientId)}>
-                    <div className="clientList__item--name"><h5>{this.props.name}</h5></div>
+                <div className="clientItem__module" onClick={(event) => {
+                    this.showEditor(event, this.props.clientId);
+                    this.handleClick(this.props.clientId);
+                }
+                }>
+                    <div className="clientItem__details">
+
+                        <div className="clientItem__details--name">
+                            <h5>{this.props.name}</h5>
+                        </div>
+
+                        <div className="clientItem__details--contact-videos">
+                            <div className="email"><span>email:</span><p> {this.props.email}</p></div>
+                            <div className="videos"><span>videos:</span><p>  {this.props.videos.length}</p></div>
+                        </div>
+                        
+                    </div>
+                    <div className="clientItem__module--button">
+
+                        <button className="item__delete" onClick={(event) => this.props.removeClient(event, this.props.clientId, this.props.name)}><h5>Remove</h5></button>
+
+                    </div>
                 </div>
-                
-                <div className="clientList__details">
-
-                    <div className="clientList__details--email"><span>email:</span><p> {this.props.email}</p></div>
-                    <div className="clientList__details--videos"><span>videos:</span><p>  {this.props.videos.length}</p></div>
-                </div>
-
-                <div className="clientList__item--button">
-                    
-                    <button className="item__delete" onClick={(event) => this.props.removeClient(event, this.props.clientId, this.props.name)}><h5>Remove</h5></button>
-
-                </div>
+                   
 
                
 
+                <div id={this.props.clientId} className="client__editor">
+                    {this.clientEditor(this.state.currentDataForEdit)}
+                </div>
+               
             </div>
-            <div className="client__editor">
-                {this.clientEditor(this.state.currentDataForEdit)}
-            </div></div>
+
+               
+           
+        
         )
     }
 }

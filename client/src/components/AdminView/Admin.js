@@ -189,7 +189,7 @@ addClient = event => {
                 
               </div>
               
-              <button>Add</button>
+              <button>&#xff0b; Add</button>
             </form>
 
           </div>

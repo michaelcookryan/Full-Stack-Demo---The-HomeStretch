@@ -38,10 +38,22 @@ findAndRedirect = event => {
      
           let redirect = false
 
-            if (currentUser.role !== "Admin") {
+            if (currentUser === undefined){
+
               redirect = false
+              
+              alert("This user does not exist. Please check your email entered and try again.")
+
+              return
+
+            }else if (currentUser.role !== "Admin") {
+
+              redirect = false
+
             } else { 
+
               redirect = true
+
             }
       
       localStorage.defaultInfo = JSON.stringify(currentUser.clientId)
@@ -94,7 +106,7 @@ logOut = event => {
 
                 return (<Redirect to={`/clients/${this.state.id}`} />)
                                
-              } else if(this.state.role === null){
+              } else if(this.state.role === null || this.state.role === undefined){
 
                 return (<Login findAndRedirect={this.findAndRedirect}/>)
 

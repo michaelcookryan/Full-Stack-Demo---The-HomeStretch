@@ -105,8 +105,8 @@ button{
         transition: all .4s ease-in-out;
     }
     &:active,
-    &:visited,
-    &:focus{
+    &:visited
+    {
         background:$blush;
     }
 

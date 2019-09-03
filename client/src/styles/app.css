@@ -175,11 +175,15 @@ header section a button:hover {
   transition: all .4s ease-in-out;
 }
 
-.clientItem__module .clientItem__details--name h5:hover, .clientItem__module .clientItem__details--name h5:focus, .clientItem__module .clientItem__details--name h5:active, .clientItem__module .clientItem__details--name h5:visited {
+.clientItem__module .clientItem__details--name h5:hover, .clientItem__module .clientItem__details--name h5:active, .clientItem__module .clientItem__details--name h5:visited {
   background: #841983;
   border-radius: 0 50px;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
+}
+
+.clientItem__module .clientItem__details--name h5:focus {
+  background: #a4d555;
 }
 
 .clientItem__module .clientItem__details--contact-videos {
@@ -446,7 +450,7 @@ footer {
 
 .client-section__title {
   font-size: 3.5rem;
-  line-height: 2rem;
+  line-height: 2.9rem;
   color: #fff;
 }
 
@@ -610,7 +614,7 @@ button:hover {
   transition: all .4s ease-in-out;
 }
 
-button:active, button:visited, button:focus {
+button:active, button:visited {
   background: #ff5992;
 }
 

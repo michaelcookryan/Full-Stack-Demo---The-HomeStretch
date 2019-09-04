@@ -55,7 +55,7 @@ export default class EditItem extends Component {
                 <form className="edit__form" onSubmit={(event)=> this.props.updateClient(event, this.props.clientId)}>
                     <div className="select-videos">
                        
-                        <VideoOptions allVideos={this.state.allVideos} assigned={this.state.assignedVideos}/>
+                        <VideoOptions allVideos={this.state.allVideos} assigned={this.state.assignedVideos} admin="edit-"/>
 
                     </div>
 
@@ -63,12 +63,8 @@ export default class EditItem extends Component {
                         <button className="close" onClick={(event) => {
                             this.props.showEditor(event, this.props.clientId);
                             this.props.handleClick(this.props.clientId);
-                            // this.refeshView();
                         }}>Close</button>
 
-                        {/* <button className="update" onClick={() => {
-                            this.refeshView();
-                            }}>Update</button> */}
                         <button className="update" type="submit">Update</button>
                     </div>
                     

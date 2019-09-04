@@ -44,47 +44,9 @@ export default class Admin extends Component {
 
       }).catch(err => console.log(err));
 
-    // axios.get(videosUrl)
-    //   .then(response => {
-
-    //     this.setState({
-
-    //       videos: response.data.data
-
-    //     });
-
-    //   }).catch(err => console.log(err));
-    console.log("settingState inside updatClient: ", this.state.clients)
   }
 
 
-
-
-  // settingStateForList = () => {
-  //       axios.get(clientsUrl)
-  //         .then(response => {
-          
-  //           this.setState({
-
-  //             clients: response.data.data,
-  //             clientId: response.data.data.clientId
-
-  //           });
-
-  //         }).catch(err => console.log(err));
-
-  //       axios.get(videosUrl)
-  //         .then(response => {
-
-  //           this.setState({
-
-  //             videos: response.data.data
-
-  //           });
-
-  //         }).catch(err => console.log(err));
-  //   console.log("settingState inside updatClient: ", this.state.clients)
-  // }
 
 
   componentDidMount() {
@@ -93,6 +55,8 @@ export default class Admin extends Component {
 
   }
   
+
+
 showAllVideoOptions() {
     const options = this.state.videos.map(video => {
 
@@ -110,6 +74,8 @@ showAllVideoOptions() {
     return options;
 }
 
+  
+  
 addClient = event => {
     event.preventDefault();
 
@@ -154,6 +120,8 @@ addClient = event => {
       event.target.reset();
 };
 
+  
+  
   removeClient = (event, clientId, name) => {
 
     let confirmation = window.confirm(`Confirm you are removing ${name} from your client list.`)
@@ -170,6 +138,8 @@ addClient = event => {
 
 }
 
+  
+  
   updateClient = (event, id) => {
     event.preventDefault()
 
@@ -183,7 +153,7 @@ addClient = event => {
         assigned.push(checkbox.value);
 
       }
-    } console.log("update client f: ", assigned)
+    } 
 
     const clientToUpdate = {
       clientId: id,
@@ -194,18 +164,16 @@ addClient = event => {
       .then(() => {
 
         this.settingStateForList()
-        console.log("updatClient: ", this.state.clients)
+        
 
       }).catch(err => console.log(err));
 
 
   }; 
   
-
-  
   
   render() {
-console.log("render: ", this.state.clients)
+
     return (
      
       
@@ -213,10 +181,13 @@ console.log("render: ", this.state.clients)
          
         <h1 className="admin-section__title">Therapist's Dashboard</h1>
         <h2 className="admin-section__subtitle">Client List</h2>
+
         <div className="admin-columns">
 
           <div className="admin-columns__list">
-            <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive} updateClient={this.updateClient}/>
+
+            <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive} updateClient={this.updateClient} />
+            
           </div>
             
           <div className="admin-columns__form">
@@ -228,7 +199,7 @@ console.log("render: ", this.state.clients)
               
               <div className="select-videos">              
                 
-                <VideoOptions allVideos={this.state.videos} assigned={this.state.defaultEmpty} />
+                <VideoOptions allVideos={this.state.videos} assigned={this.state.defaultEmpty} admin="admin-"/>
                 
               </div>
               

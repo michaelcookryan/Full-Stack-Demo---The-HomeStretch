@@ -2,7 +2,7 @@ import React from 'react'
 import ClientItem from './ClientItem'
 
 export default function ClientList({ clients, removeClient, showEditor, isActive, updateClient}) {
-    console.log("clientList :", clients)
+    
     const allClients = clients.map(client => {
 
         if (client.role !== "Admin") {

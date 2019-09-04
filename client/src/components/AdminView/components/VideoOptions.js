@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function VideoOptions({allVideos, assigned}) {
+export default function VideoOptions({allVideos, assigned, admin}) {
 
     const options = allVideos.map(video => {
 
+        let locationId = admin + video.videoId
         let searched = assigned.indexOf(video.videoId)
 
         if(searched !== -1){
@@ -11,7 +12,7 @@ export default function VideoOptions({allVideos, assigned}) {
         return (
 
             <div className="video-options" key={video._id}>
-                <input className="video-options__checkbox" type="checkbox" id={video.videoId} name="assignedVideos" value={video.videoId} defaultChecked /><label htmlFor={video.videoId}>{video.title}</label>
+                <input className="video-options__checkbox" type="checkbox" id={locationId} name="assignedVideos" value={video.videoId} defaultChecked /><label htmlFor={locationId}>{video.title}</label>
             </div>
 
         );
@@ -20,7 +21,7 @@ export default function VideoOptions({allVideos, assigned}) {
             return (
 
                 <div className="video-options" key={video._id}>
-                    <input className="video-options__checkbox" type="checkbox" id={video.videoId} name="assignedVideos" value={video.videoId} /><label htmlFor={video.videoId}>{video.title}</label>                  
+                    <input className="video-options__checkbox" type="checkbox" id={locationId} name="assignedVideos" value={video.videoId} /><label htmlFor={locationId}>{video.title}</label>                  
                 </div>
 
             );

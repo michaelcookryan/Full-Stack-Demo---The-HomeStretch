@@ -17,31 +17,74 @@ export default class Admin extends Component {
     isLoading:true,
     defaultEmpty:['video']
   };
- 
+
+
+
   settingStateForList = () => {
-        axios.get(clientsUrl)
-          .then(response => {
-          
-            this.setState({
+    axios.get(clientsUrl)
+      .then(response => {
 
-              clients: response.data.data,
-              clientId: response.data.data.clientId
+        this.setState({
 
-            });
+          clients: response.data.data,
+          clientId: response.data.data.clientId
 
-          }).catch(err => console.log(err));
+        }, () => {
+            axios.get(videosUrl)
+              .then(response => {
 
-        axios.get(videosUrl)
-          .then(response => {
+                this.setState({
 
-            this.setState({
+                  videos: response.data.data
 
-              videos: response.data.data
+                });
 
-            });
+              }).catch(err => console.log(err));
+        });
 
-          }).catch(err => console.log(err));
+      }).catch(err => console.log(err));
+
+    // axios.get(videosUrl)
+    //   .then(response => {
+
+    //     this.setState({
+
+    //       videos: response.data.data
+
+    //     });
+
+    //   }).catch(err => console.log(err));
+    console.log("settingState inside updatClient: ", this.state.clients)
   }
+
+
+
+
+  // settingStateForList = () => {
+  //       axios.get(clientsUrl)
+  //         .then(response => {
+          
+  //           this.setState({
+
+  //             clients: response.data.data,
+  //             clientId: response.data.data.clientId
+
+  //           });
+
+  //         }).catch(err => console.log(err));
+
+  //       axios.get(videosUrl)
+  //         .then(response => {
+
+  //           this.setState({
+
+  //             videos: response.data.data
+
+  //           });
+
+  //         }).catch(err => console.log(err));
+  //   console.log("settingState inside updatClient: ", this.state.clients)
+  // }
 
 
   componentDidMount() {
@@ -129,7 +172,7 @@ addClient = event => {
 
   updateClient = (event, id) => {
     event.preventDefault()
-    
+
     const selectedVideos = event.target.assignedVideos;
     const assigned = [];
 
@@ -140,7 +183,7 @@ addClient = event => {
         assigned.push(checkbox.value);
 
       }
-    }console.log(assigned)
+    } console.log("update client f: ", assigned)
 
     const clientToUpdate = {
       clientId: id,
@@ -151,7 +194,7 @@ addClient = event => {
       .then(() => {
 
         this.settingStateForList()
-        
+        console.log("updatClient: ", this.state.clients)
 
       }).catch(err => console.log(err));
 
@@ -162,7 +205,7 @@ addClient = event => {
   
   
   render() {
-
+console.log("render: ", this.state.clients)
     return (
      
       

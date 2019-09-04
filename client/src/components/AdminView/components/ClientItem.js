@@ -35,8 +35,8 @@ export default class ClientItem extends Component {
                 clientId={retrievedData.clientId}
                 name={retrievedData.name}
                 email={retrievedData.email}
-                videos={this.state.assignedVideos}
-                // videos={retrievedData.videos}
+                // videos={this.state.assignedVideos}
+                videos={retrievedData.videos}
                 showEditor={this.showEditor}
                 allVideos={this.state.allVideos}
                 updateClient={this.props.updateClient}
@@ -49,6 +49,7 @@ export default class ClientItem extends Component {
     handleClick = (id) => { 
         const editor = document.getElementById(id);
         editor.classList.toggle('isOpen')
+        this.refreshItemView()
     }
 
     componentDidMount() {

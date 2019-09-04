@@ -15,21 +15,20 @@ export default class ClientItem extends Component {
         allVideos: [],
         assignedVideos:this.props.videos
     }
-
+// Pretty sure this is the area casuing concern re btns not correct in display
     showEditor = (event, clientId) => {
         event.preventDefault()
-
+        let currentVideos = this.state.assignedVideos
         this.setState({
 
             isActive: !this.state.isActive,
-            assignedVideos: this.state.assignedVideos
-
+            assignedVideos: currentVideos
         })
 
     }
 
     clientEditor = (retrievedData) => {
-      
+    //   console.log("retireved: ",retrievedData.videos)
         if (this.state.isActive && retrievedData) {
 
             return <EditItem
@@ -37,6 +36,7 @@ export default class ClientItem extends Component {
                 name={retrievedData.name}
                 email={retrievedData.email}
                 videos={this.state.assignedVideos}
+                // videos={retrievedData.videos}
                 showEditor={this.showEditor}
                 allVideos={this.state.allVideos}
                 updateClient={this.props.updateClient}
@@ -52,41 +52,73 @@ export default class ClientItem extends Component {
     }
 
     componentDidMount() {
-        axios.get(videosUrl)
-            .then(response => {
+        this.refreshItemView()
+        // axios.get(videosUrl)
+        //     .then(response => {
 
-                this.setState({
+        //         this.setState({
 
-                    allVideos: response.data.data
+        //             allVideos: response.data.data
 
-                });
+        //         });
 
-            }).catch(err => console.log(err));
+        //     }).catch(err => console.log(err));
         
-        axios.get(`${clientsUrl}/${this.props.clientId}`).then(response => {
+        // axios.get(`${clientsUrl}/${this.props.clientId}`).then(response => {
+
+        //     this.setState({
+
+        //         currentDataForEdit: response.data.response
+
+        //     })
+
+        // }).catch(err => console.log(err))
+ 
+    }
+refreshItemView(){
+    axios.get(videosUrl)
+        .then(response => {
 
             this.setState({
 
-                currentDataForEdit: response.data.response
+                allVideos: response.data.data
 
-            })
+            });
 
-        }).catch(err => console.log(err))
- 
-    }
+        }).catch(err => console.log(err));
+
+    axios.get(`${clientsUrl}/${this.props.clientId}`).then(response => {
+
+        this.setState({
+
+            currentDataForEdit: response.data.response
+
+        })
+
+    }).catch(err => console.log(err))
+}
+    
     render() {
     
         return (
             <div className="clientItem">
 
-                <div className="clientItem__module" onClick={(event) => {
+               {/* <div className="clientItem__module" onClick={(event) => {
                     this.showEditor(event, this.props.clientId);
                     this.handleClick(this.props.clientId);
+                   
                 }
-                }>
+                }> */}
+                <div className="clientItem__module">
                     <div className="clientItem__details">
 
-                        <div className="clientItem__details--name">
+                        <div className="clientItem__details--name" onClick={(event) => {
+                            this.showEditor(event, this.props.clientId);
+                            this.handleClick(this.props.clientId);
+                            // this.refreshItemView();
+
+                        }
+                        }>
                             <h5>{this.props.name}</h5>
                         </div>
 

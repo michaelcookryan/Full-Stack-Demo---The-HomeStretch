@@ -62,11 +62,14 @@ export default class EditItem extends Component {
                     <div className="edit__form--buttons">
                         <button className="close" onClick={(event) => {
                             this.props.showEditor(event, this.props.clientId);
-                            this.refeshView();
                             this.props.handleClick(this.props.clientId);
+                            // this.refeshView();
                         }}>Close</button>
 
-                        <button className="update">Update</button>
+                        {/* <button className="update" onClick={() => {
+                            this.refeshView();
+                            }}>Update</button> */}
+                        <button className="update" type="submit">Update</button>
                     </div>
                     
                 </form>

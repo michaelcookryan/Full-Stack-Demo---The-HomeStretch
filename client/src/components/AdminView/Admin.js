@@ -140,7 +140,7 @@ addClient = event => {
         assigned.push(checkbox.value);
 
       }
-    }
+    }console.log(assigned)
 
     const clientToUpdate = {
       clientId: id,

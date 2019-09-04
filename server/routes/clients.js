@@ -25,7 +25,8 @@ router.get("/", (req, res) => {
         if (err) return res.json({ success: false, error: err });
 
         return res.json({ data });
-    });
+      
+    }).sort({"name":1});
     
 });
 

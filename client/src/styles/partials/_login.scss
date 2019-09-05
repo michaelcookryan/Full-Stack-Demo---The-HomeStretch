@@ -4,7 +4,6 @@
     flex-direction: column;
     align-content: center;
     justify-content: space-around;
-    // background:linear-gradient(rgba(126,208,38,0.7),rgba(126,208,38,0.7)) ,url("../assets/images/massage-room.jpg");
     background:linear-gradient(rgba(126,208,38,0.7),rgba(158, 193,26, 0.7)) ,url("../assets/images/massage-room.jpg");
     background-repeat: no-repeat;
     background-position: top center;
@@ -19,22 +18,61 @@
 
          &__title{
             margin:0;
-            font-size: 7rem;
-            line-height: 6rem;
+            font-size: 2.4rem;
+            line-height: 2.8rem;
             color:#fff;
             text-shadow: 3px 3px 5px $pea-shadow;
         }
 
         &__subtitle{
             color:#fff;
-            font-size:1.3rem;
+            // font-size:1.3rem;
+            line-height:1rem;
             margin: 1rem 0 4rem 0;
         }
 
         &__form{
         display:flex;
+        flex-direction:column;
         justify-content: flex-start;
         align-items: center;
+
+
+            input{
+                // width:300px;
+                // margin:0 0.8em 0 0;
+            }
+            button{
+                background: $orchid;
+                &:hover{
+                    background: $blush;
+                }
+            }
+        }
+    }
+       
+}
+
+@media screen and(min-width:768px){
+
+    .login{
+
+
+    .login-container{
+
+
+         &__title{
+            font-size: 7rem;
+            line-height: 6rem;
+         }
+
+         &__subtitle{
+            font-size:1.3rem;
+            margin: 1rem 0 4rem 0;
+        }
+
+        &__form{
+        flex-direction:row;
 
 
             input{
@@ -49,7 +87,6 @@
             }
         }
     }
-       
+
 }
-
-
+}

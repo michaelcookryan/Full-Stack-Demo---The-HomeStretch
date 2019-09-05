@@ -92,15 +92,15 @@ header section a button:hover {
 
 .login .login-container__title {
   margin: 0;
-  font-size: 7rem;
-  line-height: 6rem;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
   color: #fff;
   text-shadow: 3px 3px 5px #567c18;
 }
 
 .login .login-container__subtitle {
   color: #fff;
-  font-size: 1.3rem;
+  line-height: 1rem;
   margin: 1rem 0 4rem 0;
 }
 
@@ -108,6 +108,10 @@ header section a button:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -116,17 +120,39 @@ header section a button:hover {
           align-items: center;
 }
 
-.login .login-container__form input {
-  width: 300px;
-  margin: 0 0.8em 0 0;
-}
-
 .login .login-container__form button {
   background: #841983;
 }
 
 .login .login-container__form button:hover {
   background: #ff5992;
+}
+
+@media screen and (min-width: 768px) {
+  .login .login-container__title {
+    font-size: 7rem;
+    line-height: 6rem;
+  }
+  .login .login-container__subtitle {
+    font-size: 1.3rem;
+    margin: 1rem 0 4rem 0;
+  }
+  .login .login-container__form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .login .login-container__form input {
+    width: 300px;
+    margin: 0 0.8em 0 0;
+  }
+  .login .login-container__form button {
+    background: #841983;
+  }
+  .login .login-container__form button:hover {
+    background: #ff5992;
+  }
 }
 
 .clientItem {

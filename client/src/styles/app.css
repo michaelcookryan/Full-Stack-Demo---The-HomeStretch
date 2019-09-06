@@ -14,6 +14,7 @@
 }
 
 header {
+  position: fixed;
   padding: 1em 0;
   width: 100%;
   background: rgba(41, 194, 251, 0.7);
@@ -47,7 +48,8 @@ header section a {
 
 header section a .header__title {
   font-family: "sauna-new";
-  font-size: 1.6em;
+  line-height: 1em;
+  font-size: 1em;
 }
 
 header section a button {
@@ -62,8 +64,16 @@ header section a button:hover {
   border-color: #ff5992;
 }
 
+@media screen and (min-width: 768px) {
+  header {
+    position: relative;
+  }
+}
+
 .login {
-  height: 91vh;
+  height: 100vh;
+  margin-top: 64px;
+  padding: 3em 0 4em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,7 +111,7 @@ header section a button:hover {
 .login .login-container__subtitle {
   color: #fff;
   line-height: 1rem;
-  margin: 1rem 0 4rem 0;
+  margin: .5rem 0 2rem 0;
 }
 
 .login .login-container__form {
@@ -115,9 +125,14 @@ header section a button:hover {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.login .login-container__form input {
+  max-width: 260px;
+  margin: 0 0 1.2em 0;
 }
 
 .login .login-container__form button {
@@ -129,6 +144,10 @@ header section a button:hover {
 }
 
 @media screen and (min-width: 768px) {
+  .login {
+    height: 91vh;
+    margin-top: 0;
+  }
   .login .login-container__title {
     font-size: 7rem;
     line-height: 6rem;
@@ -142,9 +161,11 @@ header section a button:hover {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .login .login-container__form input {
-    width: 300px;
     margin: 0 0.8em 0 0;
   }
   .login .login-container__form button {
@@ -158,34 +179,13 @@ header section a button:hover {
 .clientItem {
   padding: 1.5em;
   border-radius: 10px;
-  margin: 0 1em 1em 0;
+  margin: 0 0 1em 0;
   width: auto;
   background: beige;
 }
 
 .clientItem__module {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  padding-bottom: 1em;
-}
-
-.clientItem__module .clientItem__details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding-bottom: 2em;
 }
 
 .clientItem__module .clientItem__details--name h5 {
@@ -199,17 +199,19 @@ header section a button:hover {
   text-align: center;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
+  margin: 0 auto 2em;
+  max-width: 280px;
 }
 
-.clientItem__module .clientItem__details--name h5:hover, .clientItem__module .clientItem__details--name h5:active, .clientItem__module .clientItem__details--name h5:visited {
+.clientItem__module .clientItem__details--name h5:focus {
+  background: #fff;
+}
+
+.clientItem__module .clientItem__details--name h5.showChange {
   background: #841983;
   border-radius: 0 50px;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
-}
-
-.clientItem__module .clientItem__details--name h5:focus {
-  background: #a4d555;
 }
 
 .clientItem__module .clientItem__details--contact-videos {
@@ -267,17 +269,9 @@ header section a button:hover {
   transition: all .5s ease-in-out;
 }
 
-.clientItem__module--button button:hover {
-  border-radius: 50px;
-  background: #ff5992;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-}
-
-.clientItem__module--button button:hover h5 {
-  color: #fff;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+.clientItem__module--button button:focus {
+  outline: none;
+  background: #fff;
 }
 
 .clientItem .client__editor {
@@ -341,6 +335,7 @@ header section a button:hover {
 }
 
 .clientItem .client__editor.isOpen {
+  padding: 0;
   height: auto;
   margin-top: 0;
   -webkit-animation-name: fadeInOpacity;
@@ -371,32 +366,82 @@ header section a button:hover {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .clientItem {
+    margin: 0 1em 1em 0;
+  }
+  .clientItem__module {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding-bottom: 1em;
+  }
+  .clientItem__module .clientItem__details {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .clientItem__module .clientItem__details--name h5 {
+    -webkit-margin-after: 1.67em;
+            margin-block-end: 1.67em;
+    max-width: none;
+  }
+  .clientItem__module .clientItem__details--name h5:hover, .clientItem__module .clientItem__details--name h5:active, .clientItem__module .clientItem__details--name h5:visited {
+    background: #841983;
+    border-radius: 0 50px;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  .clientItem__module--button button:hover {
+    border-radius: 50px;
+    background: #ff5992;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+  }
+  .clientItem__module--button button:hover h5 {
+    color: #fff;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+  }
+}
+
 .admin-section {
   padding: 0 0 3em;
   max-width: 1200px;
+  margin-top: 64px;
 }
 
 .admin-section__title {
-  font-size: 3.5rem;
+  font-size: 2rem;
   line-height: 2rem;
   color: #fff;
 }
 
 .admin-section__subtitle {
+  font-size: 1rem;
   color: #FAFAFA;
   margin: .5em 0 1em;
 }
 
-.admin-section .admin-columns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+.admin-section__add-new-link-mobile {
+  display: block;
+  text-align: right;
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 .admin-section .admin-columns h2 {
@@ -404,12 +449,11 @@ header section a button:hover {
   margin: .5em 0 1em;
 }
 
-.admin-section .admin-columns__list {
-  width: 90%;
+.admin-section .admin-columns #list-anchor {
+  height: 34px;
 }
 
 .admin-section .admin-columns__form {
-  width: 460px;
   padding: 1.5em 1em;
   background: rgba(86, 124, 24, 0.3);
   border-radius: 15px;
@@ -436,8 +480,43 @@ header section a button:hover {
   margin: 1.5em 0 2.5em;
 }
 
-.admin-section .admin-columns__form form button {
-  float: right;
+@media screen and (min-width: 768px) {
+  .admin-section {
+    margin-top: 0;
+  }
+  .admin-section__title {
+    font-size: 3.5rem;
+  }
+  .admin-section__subtitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .admin-section__add-new-link-mobile {
+    display: none;
+  }
+  .admin-section .admin-columns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .admin-section .admin-columns__list {
+    width: 90%;
+  }
+  .admin-section .admin-columns #list-anchor {
+    display: none;
+  }
+  .admin-section .admin-columns__form {
+    width: 460px;
+  }
+  .admin-section .admin-columns__form form button {
+    float: right;
+  }
 }
 
 footer {
@@ -470,14 +549,34 @@ footer {
 }
 
 .client-section {
+  margin-top: 64px;
   padding: 0 0 2em;
   max-width: 1200px;
 }
 
 .client-section__title {
-  font-size: 3.5rem;
-  line-height: 2.9rem;
+  font-size: 2rem;
+  line-height: 2rem;
   color: #fff;
+}
+
+.client-section .video-player iframe {
+  height: 40vh;
+  width: 100%;
+  min-height: 230px;
+}
+
+@media screen and (min-width: 768px) {
+  .client-section {
+    margin-top: 0;
+  }
+  .client-section__title {
+    font-size: 3.5rem;
+    line-height: 2.9rem;
+  }
+  .client-section .video-player iframe {
+    height: 730px;
+  }
 }
 
 .video {

@@ -1,11 +1,38 @@
 .client-section{
+    margin-top:64px;
     padding: 0 0 2em;
     max-width: 1200px;
 
 
     &__title{
-        font-size:3.5rem;
-        line-height:2.9rem;
+        font-size:2rem;
+        line-height:2rem;
         color:#fff;
     }
+    .video-player{
+        iframe{
+            height:40vh;
+            width:100%;
+            min-height: 230px;
+        }
+        
+    }
+}
+@media screen and (min-width:768px){
+  .client-section{
+      margin-top:0;
+
+
+    &__title{
+        font-size:3.5rem;
+        line-height:2.9rem;
+        
+    }
+    .video-player{
+        iframe{
+            height:730px;
+        }
+        
+    }
+}
 }

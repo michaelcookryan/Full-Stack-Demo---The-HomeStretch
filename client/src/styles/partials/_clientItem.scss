@@ -1,21 +1,17 @@
 .clientItem{
     padding:1.5em;
     border-radius: 10px;
-    margin:0 1em 1em 0;;
+    margin:0 0 1em 0;;
     width:auto;
     background: beige;
      
 
         &__module{
-            display:flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding-bottom:1em;
+
+            padding-bottom:2em;
 
             .clientItem__details{
-            display:flex;
-            justify-content: flex-start;
-            align-items: center;
+
 
             &--name{
 
@@ -29,17 +25,17 @@
                         margin-top: 0;
                         text-align:center;
                         transition: all .4s ease-in-out;
+                        margin: 0 auto 2em;
+                        max-width: 280px;
 
-                        &:hover,
-                        &:active,
-                        &:visited{
-                            background: $orchid;
-                            border-radius: 0 50px;
-                            transition: all .4s ease-in-out;
-                        }
                         &:focus{
-                            background: $pea;
+                            background: #fff;
                         }
+                    }
+                    h5.showChange{
+                        background: $orchid;
+                        border-radius: 0 50px;
+                        transition: all .4s ease-in-out;
                     }
                 }
             
@@ -83,15 +79,11 @@
                         transition:all .5s ease-in-out;
                     }
 
-                    &:hover{
-                        border-radius: 50px;
-                        background:$blush;
-                        transition:all .5s ease-in-out;
+                    &:focus{
+                        outline:none;
+                        background:#fff;
                     }
-                    &:hover h5{
-                        color:#fff;
-                        transition:all .5s ease-in-out;
-                    }
+
                 }
             }
     }
@@ -145,6 +137,7 @@
                 
     }
     .client__editor.isOpen{
+        padding:0;
         height:auto;
         margin-top:0;
         animation-name: fadeInOpacity;
@@ -165,5 +158,55 @@
 	}
 }
 
+@media screen and (min-width:768px){
+    .clientItem{
+    margin:0 1em 1em 0;
+     
 
+        &__module{
+            display:flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom:1em;
 
+            .clientItem__details{
+            display:flex;
+            justify-content: flex-start;
+            align-items: center;
+
+                &--name{
+
+                    h5{
+                        margin-block-end: 1.67em;
+                        max-width: none;
+
+                        &:hover,
+                        &:active,
+                        &:visited{
+                            background: $orchid;
+                            border-radius: 0 50px;
+                            transition: all .4s ease-in-out;
+                        }
+                    }
+                }
+            }
+            &--button{
+
+                button{
+                   
+                    &:hover{
+                        border-radius: 50px;
+                        background:$blush;
+                        transition:all .5s ease-in-out;
+                    }
+                    &:hover h5{
+                        color:#fff;
+                        transition:all .5s ease-in-out;
+                    }
+                }
+            }
+            
+        }
+}
+
+}

@@ -55,8 +55,11 @@ clientEditor = (retrievedData) => {
 handleClick = (id) => { 
     
     const editor = document.getElementById(id);
+    const mobileBtn = document.getElementById("trigger-for-" + id);
 
+    mobileBtn.classList.toggle('showChange')
     editor.classList.toggle('isOpen')
+    
     this.refreshItemView()
     
 }
@@ -103,7 +106,7 @@ componentDidMount() {
                         <div className="clientItem__details--name" onClick={(event) => {
                             this.showEditor(event, this.props.clientId);
                             this.handleClick(this.props.clientId);}}>
-                            <h5>{this.props.name}</h5>
+                            <h5 id={"trigger-for-" + `${this.props.clientId}`}>{this.props.name}</h5>
                         </div>
 
                         <div className="clientItem__details--contact-videos">

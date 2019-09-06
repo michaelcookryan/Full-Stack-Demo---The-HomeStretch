@@ -180,6 +180,7 @@ addClient = event => {
       <section className="admin-section">
          
         <h1 className="admin-section__title">Therapist's Dashboard</h1>
+        <a href="#list-anchor" className="admin-section__add-new-link-mobile">Go to Add New Client &#x25BE;</a>
         <h2 className="admin-section__subtitle">Client List</h2>
 
         <div className="admin-columns">
@@ -189,10 +190,11 @@ addClient = event => {
             <ClientList clients={this.state.clients} removeClient={this.removeClient} showEditor={this.showEditor} isActive={this.state.isActive} updateClient={this.updateClient} />
             
           </div>
-            
+
+          <div id="list-anchor"></div>
           <div className="admin-columns__form">
             <h2>Add New Client</h2>
-
+            
             <form onSubmit={this.addClient}>
               <input className="admin-form-input" type="text" name="name" placeholder="name" required />
               <input className="admin-form-input" type="email" name="email" placeholder="email" required />

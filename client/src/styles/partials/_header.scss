@@ -1,4 +1,5 @@
 header{
+    position:fixed;
     padding:1em 0;
     width:100%;
     background:rgba(41,194,251,0.7);
@@ -17,7 +18,8 @@ header{
             
             .header__title{
                 font-family: $sauna-bold;
-                font-size:1.6em;
+                line-height: 1em;
+                font-size: 1em;
             }
             button{
                 background:none;
@@ -33,4 +35,9 @@ header{
         }
     }
     
+}
+@media screen and (min-width:768px){
+   header{
+       position: relative;
+   } 
 }

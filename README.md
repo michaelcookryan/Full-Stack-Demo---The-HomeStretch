@@ -3,3 +3,5 @@ Full-stack app with low level login for a registered massage therapist to assign
 
 This was my capstone project I created for the BrainStation Web Development diploma in the summer of 2019.
 (Requires an npm install in both the client and server directories, and MongoDB connection string)
+
+To see video of app being used: https://youtu.be/Xk5oxvzPyJc

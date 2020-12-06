@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const Video = require('./Video')
 
 
 const userSchema = new Schema({
@@ -8,8 +7,6 @@ const userSchema = new Schema({
     name: String,
     email: String,
     role: String,
-    // videos: [{videoId: String, title:String, url: String}]
-    // videos:[{type: mongoose.Schema.ObjectId, ref: 'Video'}]
     videos:[String]
 });
 

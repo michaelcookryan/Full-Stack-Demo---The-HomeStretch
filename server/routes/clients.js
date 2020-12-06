@@ -3,10 +3,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const Video = require("../models/Video")
+const mongodbAccount = "Your MongoDB account details and password"
 
 mongoose.connect(
-    process.env.MONGODB_URI ||
-    "mongodb+srv://mcryan27:mike272727@homestretch-l9uzw.mongodb.net/test?retryWrites=true&w=majority",
+    process.env.MONGODB_URI || mongodbAccount,
     { useNewUrlParser: true }
 );
 

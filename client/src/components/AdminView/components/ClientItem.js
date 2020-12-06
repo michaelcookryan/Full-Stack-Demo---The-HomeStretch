@@ -40,7 +40,6 @@ clientEditor = (retrievedData) => {
             clientId={retrievedData.clientId}
             name={retrievedData.name}
             email={retrievedData.email}
-            // videos={this.state.assignedVideos}
             videos={retrievedData.videos}
             showEditor={this.showEditor}
             allVideos={this.state.allVideos}
